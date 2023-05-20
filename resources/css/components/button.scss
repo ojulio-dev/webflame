@@ -1,0 +1,37 @@
+.main-button {
+
+    width: 150px;
+    height: 45px;
+    margin-top: 10px;
+
+    font-size: 15px;
+
+    border: none;
+    border-radius: 30px;
+    
+    color: #fff;
+
+    cursor: pointer;
+    transition: $standardTransition;
+
+    i {
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+    }
+
+    justify-self: center;
+    align-self: center;
+
+}
+
+.main-button.-blue {
+    background-color: $blueColor;
+}
+
+.main-button.-red {
+    background: $orangeColor;
+}

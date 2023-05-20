@@ -1,0 +1,13 @@
+@import 'variables.scss';
+@import 'reset.scss';
+@import 'main.scss';
+
+// Components
+@import 'components/cardVideo.scss';
+@import 'components/modal.scss';
+@import 'components/loader.scss';
+@import 'components/button.scss';
+
+// Pages
+@import 'pages/home.scss';
+@import 'pages/profile/videos.scss';
