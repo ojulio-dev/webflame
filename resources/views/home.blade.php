@@ -47,7 +47,7 @@ $videos = [
 
 @endphp
 
-@extends('layouts.app', ['title' => 'Pagina Inicial'])
+@extends('layouts.app', ['title' => 'Pagina Inicial', 'content' => 'home'])
 
 @section('headerContent')
 
@@ -57,28 +57,24 @@ $videos = [
 
 @section('main')
 
-    <section class="main-section -home">
+    @if (count($videos))
 
-        @if (count($videos))
+        <ul class="main-videos-wrapper">
+            @foreach($videos as $video)
 
-            <ul class="main-videos-wrapper">
-                @foreach($videos as $video)
+                @include('components.cardVideo', [
+                    'thumbnail' => $video['thumbnail'],
+                    'title' => $video['title'],
+                    'canalName' => $video['canalName'],
+                    'timeStamp' => $video['timeStamp']
+                ])
 
-                    @include('components.cardVideo', [
-                        'thumbnail' => $video['thumbnail'],
-                        'title' => $video['title'],
-                        'canalName' => $video['canalName'],
-                        'timeStamp' => $video['timeStamp']
-                    ])
+            @endforeach
+        </ul>
 
-                @endforeach
-            </ul>
-
-        @else
-            <span style="display: block; text-align:center">Nenhum vídeo foi publicado.</span>
-        @endif
-
-    </section>
+    @else
+        <span style="display: block; text-align:center">Nenhum vídeo foi publicado.</span>
+    @endif
 
 @endsection
 

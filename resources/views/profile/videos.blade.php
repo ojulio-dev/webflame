@@ -53,14 +53,11 @@ $videos = [
 
 @endphp
 
-@extends('layouts.app', ['title' => 'Upload'])
+@extends('layouts.app', ['title' => 'Upload', 'content' => 'videos'])
 
 @section('main')
 
-<section class="main-section -videos">
-
-    @include('components.button', [ 
-        'color' => 'red',
+    @include('components.button', [
         'text' => 'Publicar Vídeo',
         'id' => 'button-upload-video',
         'modal' => 'upload'
@@ -93,7 +90,6 @@ $videos = [
                 </div>
 
                 @component('components.button')
-                    @slot('color') red @endslot
 
                     @slot('modal') videoInfo @endslot
 
@@ -159,7 +155,6 @@ $videos = [
                 <input class="input-send-thumbnail" style="display: none;" type="file" accept="image/*" name="thumbnail-create" id="thumbnail-create">
 
                 @include('components.button', [
-                    'color' => 'red',
                     'text' => 'Continuar'
                 ])
         
@@ -177,8 +172,6 @@ $videos = [
         </form>
 
     @endcomponent
-
-</section>
 
 @endsection
 

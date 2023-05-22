@@ -25,27 +25,27 @@
 </head>
 <body>
     
-    <header class="header">
-        <a class="header-title-wrapper" href="{{route('home')}}">
-            <img src="{{asset('assets/images/logo.png')}}" alt="Logo WebFlame">
-            
-            <h1>Web Flame</h1>
-        </a>
+    @if (!isset($hideHeader))
 
-        <div class="header-search-wrapper">
-            @section('headerContent') @show
+        <header class="header">
+            <a class="header-title-wrapper" href="{{route('home')}}">
+                <img src="{{asset('assets/images/logo.png')}}" alt="Logo WebFlame">
+                
+                <h1>Web Flame</h1>
+            </a>
 
-            <img src="{{asset('assets/images/profile.png')}}" alt="User Icon">
-        </div>
-    </header>
+            <div class="header-search-wrapper">
+                @section('headerContent') @show
 
-    <main> @yield('main') </main>
+                <img src="{{asset('assets/images/profile.png')}}" alt="User Icon">
+            </div>
+        </header>
 
-    <script>
+    @endif
 
-        const publicRouter = "{{asset('/assets')}}";
+    <main class="main-content -{{$content}}"> @yield('main') </main>
 
-    </script>
+    <script> const publicRouter = "{{asset('/assets')}}"; </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

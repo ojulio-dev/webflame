@@ -1,5 +1,5 @@
 <button 
-    class="main-button -{{$color}}" 
+    class="main-button -{{$color ?? 'orange'}}" 
 
     type="{{$type ?? 'button'}}"
 
