@@ -1,0 +1,223 @@
+.main-content.-watch {
+    
+    .title-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 15px 0;
+
+        h2 {
+            font-weight: 600;
+            font-size: 22px;
+
+            color: #212121;
+        }   
+
+        small {
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+    
+    .feedback-and-subscribe {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .icons-wrapper {
+
+            padding: 8px 30px;
+            background: #f1f1f1;
+            border-radius: 30px;
+
+            img {
+                width: 37px;
+                height: auto;
+
+                cursor: pointer;
+                transition: 200ms;
+
+                &:hover {
+                    transform: translateY(-10%) scale(1.1);
+                }
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .canal-subscribe-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                
+                .important-infos {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+
+                    p {
+                        font-size: 17px;
+                        font-weight: 500;
+                    }
+
+                    small {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    .additional-info-wrapper {
+        display: flex;
+
+        justify-content: left;
+        align-items: center;
+        gap: 15px;
+        
+        font-size: 16px;
+        font-style: italic;
+
+        margin-top: 60px;
+
+        .button-element {
+            padding: 10px 25px;
+            border: 2px solid $textColor;
+            border-radius: 20px;
+
+            font-size: inherit;
+            cursor: pointer;
+
+            font-style: inherit;
+            background: #fff;
+
+            user-select: none;
+        }
+    }
+
+    .comment-element {
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+        margin-top: 60px;
+
+        .send-comment {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 10px;
+
+            width: 100%;
+
+            & > img {
+                width: 45px;
+                height: 45px;
+
+                border-radius: 50%;
+            }
+
+            .input-wrapper {
+                flex: 1;
+                display: flex;
+
+                position: relative;
+
+                input {
+                    box-sizing: content-box;
+                    width: 100%;
+
+                    padding: 15px 25px;
+                    height: 18px;
+                    padding-right: 60px;
+
+                    border-radius: 10px;
+                    border: 1px solid #ddd;
+                    outline: none;
+
+                    font-size: 1em;
+
+                    overflow: hidden;
+                }
+                   
+
+                .send-icon {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    border-radius: 10px;
+
+                    background: $orangeColor;
+                    height: 50px;
+
+                    padding: 0 15px;
+
+                    img {        
+                        cursor: pointer;
+                        width: 20px;
+                    }
+                }
+            }
+        }
+
+        ul {
+            margin-top: 30px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 30px;
+
+            li {
+                display: flex;
+                gap: 10px;
+
+                .important-infos {
+
+                    & > div {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        margin-bottom: 5px;
+
+                        a {
+                            font-size: 17px;
+                            font-weight: 500;
+                        }
+
+                        small {
+                            font-size: 13px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    .main-modal.-video-description {
+
+        p {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+
+            font-size: 17px;
+        }
+
+    }
+}

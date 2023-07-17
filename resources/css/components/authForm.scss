@@ -1,0 +1,139 @@
+.main-auth-form {
+    background-color: #fff;
+
+    width: 70%;
+    padding: 40px;
+
+    border-radius: 7px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+
+    h1, h3 {
+        color: $orangeColor;
+    }
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    p {
+        color: #9a9a9a;
+        font-weight: 300;
+    }
+    
+    & > p {
+        text-align: center;
+        font-size: 17px;
+    }
+
+    h3 {
+        color: $orangeColor;
+        font-size: 27px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        label {
+            color: #9a9a9a; 
+            position: absolute;
+
+            top: 50%;
+            left: 12.5px;
+            transform: translateY(-50%);
+
+            padding: 5px 8px;
+            border-radius: 3px;
+            pointer-events: none;
+
+            transition: 170ms ease;
+        }
+        
+        input {
+            width: 100%;
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            
+            
+            font-size: 16px;
+            border: 1px solid #eee;
+            outline: none;
+
+            color: #707070;
+
+            &::placeholder {
+                color: #aeaeae;
+                letter-spacing: 0;
+                font-weight: 400;
+            }
+
+            &[type=password] {
+                letter-spacing: 1px;
+                font-weight: 600;   
+            }
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            button, a {
+                padding: 15px 30px;
+
+                font-size: 16px;
+
+                border: none;
+
+                border-radius: 5px;
+
+                cursor: pointer;
+                transition: 150ms linear;
+
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+
+            button:nth-child(1), a:nth-child(1) {
+                background-color: $orangeColor;
+                color: #fff;
+            }
+
+            button:nth-child(2), a:nth-child(2) {
+                background-color: #fff;
+                color: $orangeColor;
+
+                border: 1px solid $orangeColor;
+            }
+
+            .signin-google {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-left: auto;
+
+                p {
+                    font-size: 16px;
+                }
+
+                img {
+                    width: 35px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}

@@ -14,38 +14,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    @section('head') @show
+
     @vite(['resources/css/app.scss'])
 
 </head>
-<body>
-    
-    @if (!isset($hideHeader))
+<body id="app-container">
 
-        <header class="header">
-            <a class="header-title-wrapper" href="{{route('home')}}">
-                <img src="{{asset('assets/images/logo.png')}}" alt="Logo WebFlame">
-                
-                <h1>Web Flame</h1>
-            </a>
+    <header id="main-header">
+        <a class="title-wrapper" href="{{route('home')}}">
+            <img src="{{asset('assets/images/logo.png')}}" alt="Logo WebFlame">
+            
+            <h1>Web Flame</h1>
+        </a>
 
-            <div class="header-search-wrapper">
-                @section('headerContent') @show
+        <div class="search-wrapper">
+            @if (isset($search) && $search == true)
 
-                <img src="{{asset('assets/images/profile.png')}}" alt="User Icon">
-            </div>
-        </header>
+                <input type="search" placeholder="Procurando algum vídeo?">
 
-    @endif
+            @endif
 
-    <main class="main-content -{{$content}}"> @yield('main') </main>
+            @include('components.userIcon', [
+                'size' => '40px'
+            ])
+        </div>
+    </header>
 
-    <script> const publicRouter = "{{asset('/assets')}}"; </script>
+    <main class="main-content -{{$page}} {{$classes ?? ''}}"> @yield('main') </main>
+
+    <script> const publicPath = "{{asset('/assets')}}"; </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

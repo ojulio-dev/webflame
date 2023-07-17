@@ -1,0 +1,100 @@
+.main-admin-table {
+
+    text-align: center;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        border-radius: 10px;
+        overflow: hidden;
+    
+        tr {
+            font-size: 17px;
+            background-color: #fff;
+    
+            td {
+                padding: 10px 0;
+                text-align: start;
+            }
+    
+            td:first-child {
+                width: 50px;
+                padding-left: 15px;
+                padding-right: 15px;
+                text-align: start;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+        
+                    border-radius: 50%;
+                    border: 1px solid #eee;
+                }
+            }
+    
+            td:nth-child(2) {
+                font-weight: 500;
+            }
+    
+            td:nth-child(3) {
+                max-width: 250px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow-x: hidden;
+            }
+    
+            td:nth-last-child(1) {
+                text-align: end;
+    
+                padding-right: 15px;
+    
+                button {
+                    font-size: 15px;
+                    padding: 10px 28px;
+
+                    transition: 200ms;
+
+                    &:hover {
+                        filter: brightness(1.1);
+                    }
+                }
+            }
+        }
+    
+        tr:nth-child(2n + 1) {
+            background-color: #f1f1f1;
+        }
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 10px;
+        margin-top: 20px;
+
+        i {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #fff;
+            background-color: $orangeColor;
+
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        i.disabled {
+            filter: brightness(1.4);
+            pointer-events: none;
+        }
+    }
+
+}

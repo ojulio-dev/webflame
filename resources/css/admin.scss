@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+@import 'variables.scss';
+@import 'admin/reset.scss';
+
+// Components
+@import 'components/button.scss';
+@import 'components/videoPlayer.scss';
+@import 'components/userIcon.scss';
+@import 'components/modal.scss';
+@import 'components/admin/adminTable.scss';
+@import 'components/admin/videoModal.scss';
+
+@import 'admin/layout.scss';
+
+// Pages
+@import 'admin/pages/videos.scss';
+@import 'admin/pages/users.scss';

@@ -1,24 +1,26 @@
-@extends('layouts.app', ['title' => 'Entrar', 'content' => 'auth', 'hideHeader' => true])
+@extends('layouts.auth', ['title' => 'Entrar', 'page' => 'login'])
 
 @section('main')
 
-    <div class="form-wrapper">
-        <h1>WebFlame</h1>
+    @component('components.authForm')
+        @slot('title') Entrar @endslot
 
-        <p>A melhor rede social de compartilhamento de vídeos da minha cidade!</p>
-
-        <h3>Entrar</h3>
-
-        <form method="POST">
-            <input type="email" name="email" id="email" placeholder="E-Mail">
+        @slot('fields')
+            <input type="email" name="email" id="email" placeholder="E-mail">
 
             <input type="password" name="password" id="password" placeholder="Senha">
+        @endslot
 
-            <div class="buttons-wrapper">
-                <button type="button">Entrar</button>
-                <button type="button">Criar conta</button>
+        @slot('buttons')
+            <button type="button">Entrar</button>
+
+            <a href="{{route('register')}}">Criar conta</a>
+
+            <div class="signin-google">
+                <p>Ou entre com o Google</p>
+                <img src="{{asset('assets/images/icons/google.png')}}" alt="Ícone de Entrar com o Google">
             </div>
-        </form>
-    </div>
+        @endslot
+    @endcomponent
 
 @endsection

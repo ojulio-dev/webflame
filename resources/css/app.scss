@@ -1,18 +1,35 @@
 @import 'variables.scss';
-@import 'reset.scss';
-@import 'main.scss';
+@import 'app/reset.scss';
 
 // Components
 @import 'components/cardVideo.scss';
 @import 'components/modal.scss';
 @import 'components/loader.scss';
 @import 'components/button.scss';
+@import 'components/title.scss';
+@import 'components/userIcon.scss';
+@import 'components/videoPlayer.scss';
 
-// Pages
-@import 'pages/home.scss';
+#app-container {
 
-// Profile
-@import 'pages/profile/videos.scss';
+    @import 'app/main.scss';
 
-// Auth
-@import 'pages/auth/main.scss';
+    // Home
+    @import 'app/pages/home/main.scss';
+    @import 'app/pages/home/search.scss';
+
+    // User 
+    @import 'app/pages/users/findUser.scss';
+    @import 'app/pages/users/profile/videos.scss';
+    @import 'app/pages/users/profile/main.scss';
+
+    @import 'app/pages/watch.scss';
+}
+
+#auth-container {
+
+    @import 'app/auth/main.scss';
+
+    @import 'components/authForm.scss';
+
+}

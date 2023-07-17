@@ -1,0 +1,91 @@
+.main-content.-findUser {
+
+    .main-user-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .user-info-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .important-infos {
+            display: flex;
+            flex-direction: column;
+
+            gap: 5px;
+
+            h4 {
+                font-weight: 500;
+                font-size: 20px;
+            }
+
+            small {
+                font-size: 14px;
+            }
+        }
+    }
+
+    nav {
+        margin-top: 30px;
+
+        ul {
+
+            display: flex;
+
+            li {
+                font-weight: 500;
+                font-size: 19px;
+                padding: 5px 15px;
+
+                cursor: pointer;
+
+                span {
+                    position: relative;
+                }
+            }
+
+            li:nth-child(1) {
+                padding-left: 0;
+            }
+
+            .selected span::after {
+                content: ('');
+                position: absolute;
+                width: 100%;
+                height: 4px;
+                bottom: -5px;
+                left: 0;
+                border-radius: 10px;
+
+                background: $orangeColor;
+            }
+        }
+    }
+
+    .navigation-section {
+        margin-top: 30px;
+
+        .about-wrapper {
+
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+
+            .info-wrapper {
+
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                padding: 18px;
+                border-radius: 10px;
+                background: #f4f4f4;
+
+            }
+
+        }
+    }
+}

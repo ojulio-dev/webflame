@@ -27,37 +27,15 @@ $(document).ready(function() {
     
         $('.upload-video-wrapper .final-info-wrapper .inputs-wrapper input').val('');
         $('.upload-video-wrapper .send-video-wrapper input').val('');
-        $('.upload-video-wrapper .final-info-wrapper #thumbnail-picture').attr('src', `${publicRouter}/images/icons/select_thumbnail.png`);
+        $('.upload-video-wrapper .final-info-wrapper #thumbnail-picture').attr('src', `${publicPath}/images/icons/select_thumbnail.png`);
     
     });
     
     $('body').on('change', '.upload-video-wrapper .final-info-wrapper .input-send-thumbnail', function() {
-    
-        defineThumbnail();
+
+        readerImage($('.upload-video-wrapper .final-info-wrapper #thumbnail-picture')[0], this);
         
     });
-    
-    const defineThumbnail = () => {
-    
-        let thumbnailImage = document.querySelector('.upload-video-wrapper .final-info-wrapper #thumbnail-picture');
-    
-        let inputFile = $('.upload-video-wrapper .final-info-wrapper .input-send-thumbnail')[0];
-    
-        if (inputFile.files.length) {
-    
-            // Leitor
-            const reader = new FileReader();
-    
-            // Leia o último arquivo enviado
-            reader.readAsDataURL(inputFile.files[0]);
-    
-            // Quando for lido algum arquivo, execute esta função
-            reader.onload = () => {
-    
-                thumbnailImage.src = reader.result;
-            }
-        }
-    }
     
     $('.upload-video-wrapper .final-info-wrapper button').click(function() {
         

@@ -4,7 +4,7 @@
     <div class="modal-items">
         <div class="modal-title">
 
-            <h3>{{$title}}</h3>
+            <h2>{{$title}}</h2>
 
         </div>
 

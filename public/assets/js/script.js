@@ -16,7 +16,7 @@ const modalAction = (modal, action) => {
 
     if (action == 'show') {
 
-        modal = `.main-modal.${modal}`;
+        modal = `.main-modal.-${modal}`;
         
         $(modal).show();
         
@@ -39,8 +39,11 @@ $(document).ready(function() {
         
         let modal = $(this).data('modal');
 
-        modalAction(modal, 'show');
+        if (modal) {
 
+            modalAction(modal, 'show');
+
+        }
     });
 
     $('.main-modal .modal-exit').click(function() {
@@ -52,3 +55,20 @@ $(document).ready(function() {
     });
 
 });
+
+const readerImage = (userImage, imageInput) => {
+
+    if (imageInput.files.length) {
+
+        const reader = new FileReader();
+
+        reader.readAsDataURL(imageInput.files[0]);
+
+        reader.onload = () => {
+
+            userImage.src = reader.result;
+            
+        }
+    }
+
+}

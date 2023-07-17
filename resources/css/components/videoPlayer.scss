@@ -1,0 +1,24 @@
+.main-video-player {
+
+    --plyr-color-main: #f3705a;
+    --plyr-font-family: 'Rubik';
+    
+    .plyr__menu {
+        span {
+            color: unset;
+    
+        }
+    }
+
+
+    width: 100%;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+    video {
+        height: 80vh;
+    }
+}
