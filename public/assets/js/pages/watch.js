@@ -20,12 +20,4 @@ $(document).ready(function() {
     //     }
     
     // });
-
-    $('#description-button').click(function() {
-
-        const modalName = $(this).data('modal');
-
-        modalAction(modalName, 'show');
-
-    });
 });

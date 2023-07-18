@@ -59,7 +59,7 @@ $videos = [
 
     @include('components.button', [
         'text' => 'Publicar Vídeo',
-        'id' => 'button-upload-video',
+        'classes' => 'open-modal',
         'modal' => 'upload'
     ])
 
@@ -96,6 +96,8 @@ $videos = [
                     @slot('text')
                         <i class="fa-solid fa-arrow-right"></i> Mais
                     @endslot
+
+                    @slot('classes') open-modal @endslot
                 @endcomponent
             </li>
         @endforeach
@@ -176,6 +178,8 @@ $videos = [
 @endsection
 
 @section('scripts')
+
+    <script src="{{asset('assets/js/components/modal.js')}}"></script>
 
     <script src="{{asset('assets/js/pages/videos.js')}}"></script>
 

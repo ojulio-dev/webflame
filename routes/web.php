@@ -32,7 +32,7 @@ Route::prefix('user')->group(function() {
 
     Route::get('/profile', [UserController::class, 'index'])->name('profile');
 
-    Route::get('/videos', [UserController::class, 'videos'])->name('videos');
+    Route::get('/profile/videos', [UserController::class, 'videos'])->name('videos');
 
     Route::get('/{username}', [UserController::class, 'findUser'])->name('findUser');
 

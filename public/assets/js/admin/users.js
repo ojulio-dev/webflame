@@ -7,8 +7,8 @@ $(document).ready(function() {
         if ($(this).data('action') == 'ban') {
 
             Swal.fire({
-                title: 'Banir Usuário?',
-                text: 'Se possível, escreva o motivo.',
+                title: 'Banir usuário?',
+                text: 'Se possível, escreva o motivo',
                 input: 'textarea',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -47,7 +47,7 @@ $(document).ready(function() {
                 if (result.isConfirmed) {
                   Swal.fire(
                     'Feito!',
-                    'O usuário continuará on-line em nossa aplataforma!',
+                    'O usuário continuará on-line em nossa plataforma!',
                     'success'
                   )
                 }

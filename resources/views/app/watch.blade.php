@@ -42,16 +42,16 @@
                 </div>
             </a>
 
-            @include('components.button', ['text' => 'Increver-se', 'classes' => 'ubscriber'])
+            @include('components.button', ['text' => 'Increver-se', 'classes' => 'subscriber'])
         </div>
     </div>
 
     <div class="additional-info-wrapper">
-        <button class="button-element" id="description-button" data-modal="video-description">Descrição do Vídeo</button>
+        <button class="button-element open-modal" data-modal="video-description">Descrição do Vídeo</button>
 
         <p>ou</p>
 
-        <a href="#" class="button-element">Mais vídeo de Moyo Shoyo</a>
+        <a href="{{route('findUser', ['username' => '@moyoshoyo'])}}" class="button-element">Mais vídeo de Moyo Shoyo</a>
     </div>
 
     <div class="comment-element">
@@ -158,6 +158,8 @@
 @section('scripts')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.js" integrity="sha512-KD7SjO7VUcKW975+6TGB/h/E//W8Pei+W9806myhzEwekQ9W82Ne5jUMa2JMVn+pqSICZDVnvckAhTUwfON+pA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{{asset('assets/js/components/modal.js')}}"></script>
 
    <script src="{{asset('assets/js/pages/watch.js')}}"></script>
 

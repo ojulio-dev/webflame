@@ -2,12 +2,6 @@ let timeout;
 
 $(document).ready(function() {
     
-    $('#button-upload-video').click(function() {
-    
-        $('.main-modal.-upload .modal-content .send-video-wrapper').show();
-    
-    });
-    
     $('.main-modal.-upload .modal-content .input-send-video').change(function() {
     
         $('.main-modal.-upload .modal-content .send-video-wrapper').hide();
