@@ -4,12 +4,12 @@
     box-sizing: border-box;
 }
 
-p, span, h1, h2, h3, h4, a, label, small, input, textarea, button, option, li, i {
+p, span, h1, h2, h3, h4, a, label, small, input, textarea, button, option, li, table {
     font-family: 'Rubik', sans-serif;
     color: $textColor;
 }
 
-body#app-container {
+#app-container {
     max-width: 2048px;
     height: 100vh;
     overflow-y: auto;
@@ -23,8 +23,8 @@ input[type="search"]::-webkit-search-cancel-button {
     display: none;
 }
 
-input::placeholder {
-    color: #8f8f8f;
+input::placeholder, textarea::placeholder {
+    color: #999999;
 }
 
 ul, ol, dd {
@@ -48,6 +48,6 @@ img {
 }
 
 *::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #ddd;
     border-radius: 100px;
 }

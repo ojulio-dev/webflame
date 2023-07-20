@@ -6,11 +6,11 @@
 
     <div class="infos-wrapper">
         <div>
-            <label for="userIcon">
-                <img class="user-icon" src="{{asset('assets/images/users/default.jpg')}}" alt="Ícone do Usuário">
-
-                <input type="file" id="userIcon" name="userIcon">
-            </label>
+            @include('components.editImage', [
+                'width' => '100%',
+                'height' => '300px',
+                'identifier' => 'userIcon'
+            ])
 
             <small>Canal criado em 12 de maio de 2023</small>
 
@@ -41,5 +41,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/js/pages/user.js')}}"></script>
+
+    <script src="{{asset('assets/js/components/editImage.js')}}"></script>
+
 @endsection

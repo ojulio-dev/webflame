@@ -4,12 +4,26 @@ $lightTextColor: #4a4a4a;
 
 $blueColor: #007bffc3;
 
-$successColor: #28a745;
+$successColor: #00C851;
 
-$dangerColor: #dc3545;
+$dangerColor: #ff4444;
 
 $orangeColor: #f3705a;
 
 $yellowColor: #ffd15c;
 
 $standardTransition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
+
+.smoothAnimation {
+    animation: smooth 1.5s;
+}
+
+@keyframes smooth {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

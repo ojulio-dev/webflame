@@ -6,8 +6,6 @@ $(document).ready(function() {
 
     // Open videos filter modal
     $('body').on('click', '.main-section.-videosFilter .main-admin-table .validate-button', function() {
-
-        $('.main-modal-videos.-validateVideos').removeClass('closeModal');
         
         $('.main-modal-videos.-validateVideos').css('display', 'flex');
 
@@ -17,9 +15,6 @@ $(document).ready(function() {
 
     // Open filtered videos modal
     $('body').on('click', '.main-section.-reportedVideos .main-admin-table .reported-videos-modal', function() {
-
-        
-        $('.main-modal-videos.-reportedVideos').removeClass('closeModal');
         
         $('.main-modal-videos.-reportedVideos').css('display', 'flex');
 

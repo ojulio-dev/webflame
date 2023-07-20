@@ -2,17 +2,25 @@ $(document).ready(function() {
 
     const modalAction = (modal, action) => {
 
+        var hasActiveScroll = document.documentElement.scrollHeight > document.documentElement.clientHeight;
+
         if (action == 'show') {
     
             modal = `.main-modal.-${modal}`;
             
             $(modal).show();
+
+            $(modal).addClass('openModal');
             
-            $('body').css('overflow', 'hidden');
+            $('#app-container').css('overflow', 'hidden');
+
+            hasActiveScroll && $('#app-container').css('padding-right', '6px');
     
         } else {
-    
-            $('body').css('overflow', 'auto');
+
+            $('#app-container').css('overflow', 'auto');
+
+            hasActiveScroll && $('#app-container').css('padding-right', '0');
     
             $('.component-loader').hide();
     

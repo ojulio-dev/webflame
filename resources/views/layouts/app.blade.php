@@ -33,11 +33,8 @@
         </a>
 
         <div class="search-wrapper">
-            @if (isset($search) && $search == true)
 
-                <input type="search" placeholder="Procurando algum vídeo?">
-
-            @endif
+            <input type="search" placeholder="Procurando algum vídeo?">
 
             @include('components.userIcon', [
                 'size' => '40px'

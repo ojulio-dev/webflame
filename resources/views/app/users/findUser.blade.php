@@ -67,7 +67,14 @@ $videos = [
             
         </div>
 
-        @include('components.button', ['text' => 'Inscrito', 'classes' => '-subscriber'])
+        <div class="button-and-actions-menu">
+            @include('components.button', ['text' => 'Inscrito', 'classes' => '-subscriber'])
+
+            @component('components.actionsMenu')
+                <li><i class="fa-solid fa-flag"></i> Reportar usuário</li>
+                <li><i class="fa-solid fa-comment"></i> Enviar mensagem</li>
+            @endcomponent
+        </div>
     </div>
 
     <nav>
@@ -112,5 +119,7 @@ $videos = [
     <script src="{{asset('assets/js/pages/user/findUser.js')}}"></script>
 
     <script src="{{asset('assets/js/components/cardVideo.js')}}"></script>
+
+    <script src="{{asset('assets/js/components/actionsMenu.js')}}"></script>
 
 @endsection

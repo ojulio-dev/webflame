@@ -18,6 +18,6 @@ $(document).ready(function() {
 
         $(`.main-content.-findUser .section-content.-${sectionClicked}`).show();
 
-    })
+    });
 
 });

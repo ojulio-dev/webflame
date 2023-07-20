@@ -1,0 +1,28 @@
+.main-input {
+    label {
+        font-family: 'Nunito';
+        display: block;
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 18px;
+        font-weight: 300;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        outline: none;
+    }
+
+    .textarea-wrapper {
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    textarea {
+        height: 150px;
+    }
+}

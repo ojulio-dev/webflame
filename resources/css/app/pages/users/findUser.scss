@@ -4,27 +4,33 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    
-    .user-info-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 15px;
 
-        .important-infos {
+        .user-info-wrapper {
             display: flex;
-            flex-direction: column;
-
-            gap: 5px;
-
-            h4 {
-                font-weight: 500;
-                font-size: 20px;
+            align-items: center;
+            gap: 15px;
+    
+            .important-infos {
+                display: flex;
+                flex-direction: column;
+    
+                gap: 5px;
+    
+                h4 {
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+    
+                small {
+                    font-size: 14px;
+                }
             }
+        }
 
-            small {
-                font-size: 14px;
-            }
+        .button-and-actions-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
     }
 

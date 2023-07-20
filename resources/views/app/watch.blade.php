@@ -43,6 +43,11 @@
             </a>
 
             @include('components.button', ['text' => 'Increver-se', 'classes' => 'subscriber'])
+
+            @component('components.actionsMenu')
+                <li><i class="fa-solid fa-flag"></i> Reportar usuário</li>
+                <li><i class="fa-solid fa-comment"></i> Enviar mensagem</li>
+            @endcomponent
         </div>
     </div>
 
@@ -160,6 +165,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.js" integrity="sha512-KD7SjO7VUcKW975+6TGB/h/E//W8Pei+W9806myhzEwekQ9W82Ne5jUMa2JMVn+pqSICZDVnvckAhTUwfON+pA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{asset('assets/js/components/modal.js')}}"></script>
+
+    <script src="{{asset('assets/js/components/actionsMenu.js')}}"></script>
 
    <script src="{{asset('assets/js/pages/watch.js')}}"></script>
 

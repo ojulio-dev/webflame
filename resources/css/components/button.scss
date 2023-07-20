@@ -18,8 +18,16 @@
         color: #fff;
     }
 
-    &:not(.noHover):hover {
+    &:not(.cleanHover):hover {
         transform: scale(1.03);
+    }
+
+    &.cleanHover {
+        transition: 200ms;
+
+        &:hover {
+            filter: brightness(1.1);
+        }
     }
 
     justify-self: center;
@@ -33,6 +41,14 @@
 
 .main-button.-orange {
     background: $orangeColor;
+}
+
+.main-button.-success {
+    background: $successColor;
+}
+
+.main-button.-danger {
+    background: $dangerColor;
 }
 
 .main-button.-subscriber {
