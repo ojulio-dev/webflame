@@ -88,6 +88,35 @@ $profiles = [
         'name' => 'DaviGamer',
         'subs' => '03',
         'icon' => 'https://pm1.aminoapps.com/7846/c29aa598cbbc46b4ffbd23e447046fb6ee195b70r1-300-300v2_00.jpg'
+],
+[
+        'name' => 'Viniccius13',
+        'subs' => '4.560.50',
+        'icon' => 'https://e0.pxfuel.com/wallpapers/904/967/desktop-wallpaper-about-girl-in-anime-icons.jpg'
+    ],
+    [
+        'name' => 'DaviGamer',
+        'subs' => '1.400.50',
+        'icon' => 'https://i.pinimg.com/236x/72/62/7c/72627cbe125003ce7cedf877e1d7766e.jpg'
+    ],
+    [
+        'name' => 'Viniccius13',
+        'subs' => '4.560.50',
+        'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwpeJaeMm_m1F61hGBjB0qXrBm-9JDi5_4-Q&usqp=CAU'
+    ],
+    [
+        'name' => 'DaviGamer',
+        'subs' => '1.400.50',
+        'icon' => 'https://pbs.twimg.com/media/FhDY4nKWAAAmoY6.jpg'
+    ],[
+        'name' => 'Viniccius13',
+        'subs' => '4.560.50',
+        'icon' => 'https://media.tenor.com/DDOLg4aNjTwAAAAd/anime-anime-boy.gif'
+    ],
+    [
+        'name' => 'DaviGamer',
+        'subs' => '03',
+        'icon' => 'https://pm1.aminoapps.com/7846/c29aa598cbbc46b4ffbd23e447046fb6ee195b70r1-300-300v2_00.jpg'
     ]
 ];
 

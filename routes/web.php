@@ -21,33 +21,40 @@ use App\Http\Controllers\Admin\AdminVideoController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware('checkLoggedIn')->group(function() {
 
-Route::get('/watch', [HomeController::class, 'watch'])->name('watch');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/search/{search}', [HomeController::class, 'search'])->name('search');
+    Route::get('/watch', [HomeController::class, 'watch'])->name('watch');
 
-// Profile
-Route::prefix('user')->group(function() {
+    Route::get('/search', [HomeController::class, 'search'])->name('search');
 
-    Route::get('/profile', [UserController::class, 'index'])->name('profile');
+    // Profile
+    Route::prefix('user')->group(function() {
 
-    Route::get('/profile/videos', [UserController::class, 'videos'])->name('videos');
+        Route::get('/profile', [UserController::class, 'index'])->name('profile');
 
-    Route::get('/{username}', [UserController::class, 'findUser'])->name('findUser');
+        Route::get('/profile/videos', [UserController::class, 'videos'])->name('videos');
 
+        Route::get('/{username}', [UserController::class, 'findUser'])->name('findUser');
+
+    });
+
+
+    // Admin
+    Route::prefix('admin')->group(function() {
+
+        Route::get('/', [AdminHomeController::class, 'index'])->name('admin-home');
+
+        Route::get('/users', [AdminUserController::class, 'index'])->name('admin-users');
+        
+        Route::get('/videos', [AdminVideoController::class, 'index'])->name('admin-videos');
+
+    });
 });
 
-// Auth
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::middleware('checkGuest')->group(function() {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
 
-Route::prefix('admin')->group(function() {
-
-    Route::get('/', [AdminHomeController::class, 'index'])->name('admin-home');
-
-    Route::get('/users', [AdminUserController::class, 'index'])->name('admin-users');
-    
-    Route::get('/videos', [AdminVideoController::class, 'index'])->name('admin-videos');
-
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
 });

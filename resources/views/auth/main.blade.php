@@ -3,16 +3,31 @@
 @section('main')
 
     @component('components.authForm')
+        @slot('action') {{route('authLogin')}} @endslot
+
         @slot('title') Entrar @endslot
 
         @slot('fields')
-            <input type="email" name="email" id="email" placeholder="E-mail">
+            <div class="inputs-wrapper">
+                <input type="email" name="email" id="email" placeholder="E-mail">
 
-            <input type="password" name="password" id="password" placeholder="Senha">
+                @if ($errors->get('email'))
+                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('email')[0]}}</p>
+                @endif
+            </div>
+
+            <div class="inputs-wrapper">
+                <input type="password" name="password" id="password" placeholder="Senha">
+
+                @if ($errors->get('password'))
+                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('password')[0]}}</p>
+                @endif
+            </div>
+
         @endslot
 
         @slot('buttons')
-            <button type="button">Entrar</button>
+            <button type="submit">Entrar</button>
 
             <a href="{{route('register')}}">Criar conta</a>
 

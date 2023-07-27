@@ -98,7 +98,7 @@ $videos = [
 
                 <td>103 visualizações</td>
 
-                <td class="status -{{$video['viewing_status'] ? 'publish' : 'private'}}">{{$video['viewing_status'] ? 'Publico' : 'Privado'}}</td>
+                <td class="status -{{$video['viewing_status'] ? 'publish' : 'private'}}">{{$video['viewing_status'] ? 'Público' : 'Privado'}}</td>
 
                 <td>
                     @include('components.button', ['text' => 'Mais informações', 'classes' => 'open-modal', 'modal' => 'editVideo'])

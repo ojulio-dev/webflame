@@ -24,7 +24,7 @@
         text-align: center;
     }
 
-    p {
+    & > p {
         color: #9a9a9a;
         font-weight: 300;
     }
@@ -58,29 +58,44 @@
 
             transition: 170ms ease;
         }
-        
-        input {
-            width: 100%;
-            background: #fff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            
-            
-            font-size: 16px;
-            border: 1px solid #eee;
-            outline: none;
 
-            color: #707070;
+        .inputs-wrapper {
 
-            &::placeholder {
-                color: #aeaeae;
-                letter-spacing: 0;
-                font-weight: 400;
+            input {
+                width: 100%;
+                background: #fff;
+                padding: 15px 20px;
+                border-radius: 10px;
+                
+                
+                font-size: 16px;
+                border: 1px solid #eee;
+                outline: none;
+    
+                color: #707070;
+    
+                &::placeholder {
+                    color: #aeaeae;
+                    letter-spacing: 0;
+                    font-weight: 400;
+                }
+    
+                &[type=password] {
+                    letter-spacing: 1px;
+                    font-weight: 600;   
+                }
             }
 
-            &[type=password] {
-                letter-spacing: 1px;
-                font-weight: 600;   
+            p {
+                margin-top: 10px;
+                color: $orangeColor;
+
+                font-size: 15px;
+
+                i {
+                    margin-right: 4px;
+                    font-size: 16px;
+                }
             }
         }
 

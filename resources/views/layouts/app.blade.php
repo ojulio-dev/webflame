@@ -32,19 +32,61 @@
             <h1>Web Flame</h1>
         </a>
 
-        <div class="search-wrapper">
+        <div class="search-and-avatar">
+            <div class="search-wrapper">
+                <form method="GET" action="{{route('search')}}">
+                    <input type="search" placeholder="Procurando algum vídeo?" name="q">
+                </form>
 
-            <input type="search" placeholder="Procurando algum vídeo?">
+                <ul class="results"></ul>
+            </div>
 
-            @include('components.userIcon', [
-                'size' => '40px'
-            ])
+            <div class="avatar-wrapper">
+                @include('components.userIcon', [
+                    'size' => '40px'
+                ])
+                
+                <nav>
+                    <div class="user-info">
+                        <img src="https://64.media.tumblr.com/c250844c5d3473ec55e8dc7b1f375c77/80255ac43fe243e5-14/s400x600/e9d60ebdc69aa04424f65c210fcfd66a1ce6d281.jpg" alt="Ícone do Usuário">
+                        
+                        <p>Moyo Shoyo</p>
+                    </div>
+
+                    <ul class="main-navigation">
+                        <li>
+                            <a href="{{route('home')}}"><i class="fa-solid fa-house"></i> Página inicial</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('profile')}}"><i class="fa-solid fa-user"></i> Perfil</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('videos')}}"><i class="fa-solid fa-clapperboard"></i> Meus vídeos</a>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            <a href="{{route('admin-home')}}"><i class="fa-solid fa-cookie-bite"></i> Administração</a>
+                        </li>
+                        <li>
+                            <a href="{{route('authLogout')}}"><i class="fa-solid fa-door-closed"></i> Sair</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
     <main class="main-content -{{$page}} {{$classes ?? ''}}"> @yield('main') </main>
 
-    <script> const publicPath = "{{asset('/assets')}}"; </script>
+
+
+    <script> 
+        const publicPath = "{{asset('/assets')}}";
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

@@ -7,6 +7,10 @@
     }
 
     .owl-carousel {
+
+        .owl-dots {
+            display: none;
+        }
     
         li > a {
             display: flex;
@@ -14,16 +18,16 @@
             justify-content: center;
             gap: 25px;
             
-            border: 2px solid #ebeaea;
+            border: 2px solid #eee;
             border-radius: 20px;
 
-            padding: 15px;
+            padding: 15px 25px;
 
             cursor: pointer;
 
             img {
-                width: 42%;
-                height: 110px;
+                width: 100px;
+                height: 100px;
                 object-fit: cover;
                 border-radius: 50%;
             }

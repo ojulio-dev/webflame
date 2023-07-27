@@ -5,7 +5,9 @@
 
     <h3>{{$title}}</h3>
 
-    <form method="POST">
+    <form method="POST" action="{{$action}}">
+        @csrf
+
         {{$fields}}
 
         <div class="buttons-wrapper">{{$buttons}}</div>
