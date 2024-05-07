@@ -1,0 +1,1 @@
+<p class="main-small-message" style="text-align: {{$align ?? 'left'}}">{{$slot}}</p>

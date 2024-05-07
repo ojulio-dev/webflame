@@ -1,98 +1,3 @@
-@php
-
-$users = [
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Moyo Shoyo',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 32,
-        'subscribers' => 54
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 1',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 10,
-        'subscribers' => 100
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 2',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 20,
-        'subscribers' => 200
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 3',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 30,
-        'subscribers' => 300
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 4',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 40,
-        'subscribers' => 400
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 5',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 50,
-        'subscribers' => 500
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 6',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 60,
-        'subscribers' => 600
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 7',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 70,
-        'subscribers' => 700
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 8',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 80,
-        'subscribers' => 800
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 9',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 90,
-        'subscribers' => 900
-    ],
-    [
-        'icon' => 'default.jpg',
-        'name' => 'Nome do Usuário 10',
-        'description' => 'Olá! Meu nick é Moyo Shoyo e eu posto vídeos na Interwebs! Gosto de jogar League of Legends e outros jogos competitivos no geral, que tal dar uma olhadinha em outras plataformas? <br><br> Twitter e Twitch: @moyoshoyo',
-        'created_at' => '11-21-2005',
-        'total_videos' => 100,
-        'subscribers' => 1000
-    ]
-];
-
-@endphp
-
 @extends('layouts.admin', ['title' => 'Usuários', 'page' => 'users'])
 
 @section('main')
@@ -100,26 +5,26 @@ $users = [
     <section class="main-section -reportedUsers">
         <h2>Usuários reportados</h2>
 
-        @component('components.admin.adminTable')
+        @component('components.admin.adminTable', ['totalItems' => count($users)])
             @foreach($users as $index => $user)
 
             <tr {!! $index > 4 ? 'style="display: none;"' : '' !!}>
                 <td>
-                    <img src="{{asset('assets/images/users/default.jpg')}}" alt="Ícone do Usuário">
+                    <img src="{{asset('assets/images/users/' . $user->reportedUser['icon'])}}" alt="Ícone do Usuário">
                 </td>
 
-                <td>{{$user['name']}}</td>
+                <td>{{$user->reportedUser['name']}}</td>
 
-                <td>{{$user['total_videos']}} vídeos</td>
+                <td>{{count($user->reportedUser->videos)}} vídeos</td>
 
-                <td>{{$user['subscribers']}} inscritos</td>
+                <td>{{count($user->reportedUser->subscribers)}} inscritos</td>
 
                 <td>
 
                     @include('components.button', [
                         'text' => 'Verificar', 
-                        'classes' => 'reported-users-modal open-modal', 
-                        'dataAttribute' => 'data-modal="reportedUsers"'
+                        'classes' => 'reported-users-modal', 
+                        'attributes' => ['modal' => 'reportedUsers', 'id' => $user['id']]
                     ])
 
                 </td>
@@ -135,11 +40,13 @@ $users = [
 
         @slot('title') Usuários reportados @endslot
 
-        <div class="users-section">
+        @slot('attributes', ['reported-id' => '#'])
+
+        <div class="users-section -reportingUser">
             <h2>Denunciador</h2>
 
             <div class="user-icon-name">
-                @include('components.userIcon', ['size' => '45px'])
+                @include('components.userIcon', ['size' => '45px', 'source' => '1.png'])
     
                 <h3>Moyo Shoyo (<a href="{{route('findUser', ['username' => '@moyoshoyo'])}}" target="_blank">@moyoshoyo</a>)</h3>
             </div>
@@ -151,11 +58,11 @@ $users = [
             </div>
         </div>
 
-        <div class="users-section">
+        <div class="users-section -reportedUser">
             <h2>Denunciado</h2>
 
             <div class="user-icon-name">
-                @include('components.userIcon', ['size' => '45px'])
+                @include('components.userIcon', ['size' => '45px', 'source' => '1.png'])
     
                 <h3>oJulio Cesar (<a href="{{route('findUser', ['username' => '@ojuliocesar'])}}" target="_blank">@ojuliocesar</a>)</h3>
             </div>
@@ -174,9 +81,9 @@ $users = [
         </div>
 
         <div class="buttons-wrapper">
-            @include('components.button', ['text' => 'Banir', 'dataAttribute' => 'data-action="ban"'])
+            @include('components.button', ['text' => 'Banir', 'attributes' => ['action' => 'ban', 'reported-id' => '#']])
 
-            @include('components.button', ['text' => 'Não banir', 'dataAttribute' => 'data-action="not-ban"'])
+            @include('components.button', ['text' => 'Não banir', 'attributes' => ['action' => 'not-ban', 'reported-id' => '#']])
         </div>
         
     @endcomponent

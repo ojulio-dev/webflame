@@ -1,16 +1,16 @@
-.main-profiles-wrapper {
-    margin-bottom: 40px;
+.results-wrapper {
 
     h4 {
         font-weight: 500;
         margin-bottom: 15px;
     }
 
-    .owl-carousel {
+    & > img {
+        display: block;
+        width: 250px;
+    } 
 
-        .owl-dots {
-            display: none;
-        }
+    .owl-carousel {
     
         li > a {
             display: flex;
@@ -44,5 +44,19 @@
                 }
             }
         }
+    }
+}
+
+.results-wrapper + .results-wrapper {
+    margin-top: 40px;
+}
+
+.not-found {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    h4 {
+        font-weight: 500;
     }
 }

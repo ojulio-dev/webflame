@@ -13,9 +13,24 @@
             data-modal="{{$modal}}"
         @endif
 
-        {!! $dataAttribute ?? '' !!}
+        @if (isset($attributes) && count($attributes))
+
+            @foreach ($attributes as $key => $value)
+
+                data-{{$key}}="{{$value}}"
+
+            @endforeach
+
+        @endif
+
+        style="{{isset($width) ? 'width:' . $width . '' : ''}}"
     >
         {{$text}}
+
+        <div class="loader-wrapper">
+            <img src="{{asset('assets/images/loaders/loader_button.gif')}}">
+        </div>
+
     </button>
 
 @else

@@ -23,7 +23,15 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
-        
+
+        $user = User::where('email', $loginData['email'])->first();
+
+        if ($user && $user->status != 1) {
+
+            return redirect(route('login'))->withErrors(['loginFailed' => 'Infelizmente sua conta está banida da nossa plataforma...']);
+
+        }
+
         $authLogin = Auth::attempt($loginData);
 
         if ($authLogin) {
@@ -32,7 +40,7 @@ class AuthController extends Controller
 
         } else {
 
-            return redirect(route('login'));
+            return redirect(route('login'))->withErrors(['loginFailed' => 'As credenciais fornecidas são inválidas. Por favor, verifique e tente novamente.']);
 
         }
     }
@@ -53,7 +61,7 @@ class AuthController extends Controller
 
         $registerData['password'] = Hash::make($registerData['password']);
 
-        $registerData['username'] = strtolower($registerData['name']);
+        $registerData['username'] = str_replace(' ', '-', strtolower($registerData['name']));
 
         while(User::where('username', $registerData['username'])->first()) {
 

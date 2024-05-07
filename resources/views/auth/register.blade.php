@@ -12,7 +12,7 @@
                 <input type="text" name="name" placeholder="Nome">
 
                 @if ($errors->get('name'))
-                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('name')[0]}}</p>
+                    <p class="main-alert"><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('name')[0]}}</p>
                 @endif
             </div>
 
@@ -20,7 +20,7 @@
                 <input type="email" name="email" placeholder="E-mail">
 
                 @if ($errors->get('email'))
-                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('email')[0]}}</p>
+                    <p class="main-alert"><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('email')[0]}}</p>
                 @endif
             </div>
 
@@ -28,7 +28,7 @@
                 <input type="password" name="password" placeholder="Senha">
 
                 @if ($errors->get('password'))
-                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('password')[0]}}</p>
+                    <p class="main-alert"><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('password')[0]}}</p>
                 @endif
             </div>
         @endslot

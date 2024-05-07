@@ -2,6 +2,7 @@
 @import 'app/reset.scss';
 
 // Components
+@import 'components/closeElements.scss';
 @import 'components/cardVideo.scss';
 @import 'components/input.scss';
 @import 'components/modal.scss';
@@ -12,6 +13,8 @@
 @import 'components/videoPlayer.scss';
 @import 'components/actionsMenu.scss';
 @import 'components/editImage.scss';
+@import 'components/flashMessage.scss';
+@import 'components/smallMessage.scss';
 
 #app-container {
 

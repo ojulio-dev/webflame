@@ -1,0 +1,1 @@
+<div class="main-close-elements" data-elements="{{$elements}}"></div>

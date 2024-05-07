@@ -16,10 +16,13 @@ return new class extends Migration
             $table->string('name')->min(4);
             $table->string('username')->min(4);
             $table->string('email')->unique();
-            $table->string('password')->min(4);
+            $table->string('password', 72)->min(4);
             $table->text('description')->nullable();
-            $table->string('icon')->nullable();
-            $table->timestamps();
+            $table->string('icon')->default('default.png');
+            $table->boolean('status')->default(1);
+            $table->boolean('is_admin')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

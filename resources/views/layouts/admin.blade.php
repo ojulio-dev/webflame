@@ -14,6 +14,7 @@
     <link rel="shortcut icon" href="{{asset('assets/images/favicon/favicon-32x32.png')}}" type="image/x-icon">
 
     @vite(['resources/css/admin.scss'])
+
 </head>
 <body id="admin-container">
 
@@ -48,7 +49,7 @@
             
             <input type="search" placeholder="Pesquisar">
 
-            <img src="{{asset('assets/images/users/default.jpg')}}" alt="Ícone do Usuário">
+            <img src="{{asset('assets/images/users/' . $globalDataUser['icon'])}}" alt="Ícone do Usuário">
         </header>
 
         <main>
@@ -66,9 +67,13 @@
 
     <script>
 
-        const publicPath = "{{asset('/')}}";
+        const PUBLIC_PATH = "{{asset('/')}}";
+
+        const API_PATH = "{{asset('/api')}}";
 
     </script>
+
+    <script src="{{asset('assets/js/components/button.js')}}"></script>
 
     @section('scripts') @show
 

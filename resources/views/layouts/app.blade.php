@@ -25,6 +25,10 @@
 </head>
 <body id="app-container">
 
+    @include('components.loader')
+
+    @include('components.closeElements', ['elements' => '#navigation-menu-element, #results-search-element, .main-actions-menu .options'])
+
     <header id="main-header">
         <a class="title-wrapper" href="{{route('home')}}">
             <img src="{{asset('assets/images/logo.png')}}" alt="Logo WebFlame">
@@ -35,22 +39,23 @@
         <div class="search-and-avatar">
             <div class="search-wrapper">
                 <form method="GET" action="{{route('search')}}">
-                    <input type="search" placeholder="Procurando algum vídeo?" name="q">
+                    <input type="search" placeholder="Procurando algum vídeo?" name="q" autocomplete="off">
                 </form>
 
-                <ul class="results"></ul>
+                <ul class="results" id="results-search-element"></ul>
             </div>
 
             <div class="avatar-wrapper">
                 @include('components.userIcon', [
-                    'size' => '40px'
+                    'size' => '40px',
+                    'source' => asset('assets/images/users/' . $globalDataUser['icon'])
                 ])
                 
-                <nav>
+                <nav id="navigation-menu-element">
                     <div class="user-info">
-                        <img src="https://64.media.tumblr.com/c250844c5d3473ec55e8dc7b1f375c77/80255ac43fe243e5-14/s400x600/e9d60ebdc69aa04424f65c210fcfd66a1ce6d281.jpg" alt="Ícone do Usuário">
+                        <img src="{{asset('assets/images/users/' . $globalDataUser['icon'])}}" alt="Ícone do Usuário">
                         
-                        <p>Moyo Shoyo</p>
+                        <p>{{$globalDataUser['name']}}</p>
                     </div>
 
                     <ul class="main-navigation">
@@ -68,9 +73,12 @@
                     </ul>
 
                     <ul>
-                        <li>
-                            <a href="{{route('admin-home')}}"><i class="fa-solid fa-cookie-bite"></i> Administração</a>
-                        </li>
+                        @if ($globalDataUser['isAdmin'])
+                            <li>
+                                <a href="{{route('admin-home')}}"><i class="fa-solid fa-cookie-bite"></i> Administração</a>
+                            </li>
+                        @endif
+
                         <li>
                             <a href="{{route('authLogout')}}"><i class="fa-solid fa-door-closed"></i> Sair</a>
                         </li>
@@ -80,15 +88,31 @@
         </div>
     </header>
 
+    @include('components.flashMessage')
+
     <main class="main-content -{{$page}} {{$classes ?? ''}}"> @yield('main') </main>
 
-
-
     <script> 
-        const publicPath = "{{asset('/assets')}}";
+
+        const PUBLIC_PATH = "{{asset('/assets')}}";
+
+        const APP_PATH = "{{Config::get('app.domain')}}";
+
+        const API_PATH = "{{Config::get('app.domain')}}/api";
+
+        const USER_INFOS = JSON.parse('<?= json_encode(Auth::user()) ?>');
+
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{{asset('assets/js/components/loader.js')}}"></script>
+
+    <script src="{{asset('assets/js/components/button.js')}}"></script>
+
+    <script src="{{asset('assets/js/components/flashMessage.js')}}"></script>
+
+    <script src="{{asset('assets/js/components/closeElements.js')}}"></script>
 
     <script src="{{asset('assets/js/script.js')}}"></script>
     

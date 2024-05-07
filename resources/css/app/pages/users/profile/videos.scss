@@ -8,11 +8,11 @@
 
         margin-bottom: 50px;
 
-        p {
+        & > p {
             font-style: italic;
         }
 
-        img {
+        & > img {
             width: 100px;
         }
     }
@@ -23,112 +23,101 @@
         font-weight: 500;
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
+    .videos-wrapper {
 
-        tr {
-
-            height: 135px;
-            border-bottom: 2px dashed #eee;
-
-            .thumbnail-wrapper {
-                width: 220px;
-
-                input {
-                    display: none;
-                }
-                
-                img {
-                    width: 183px;
-                    height: 103px;
-                    object-fit: cover;
+        table {
+            width: 100%;
+            border-collapse: collapse;
     
-                    border-radius: 15px;
-                    cursor: pointer;
-
-                    border: 1px solid #eee;
-                }
-            }   
-
-            .inputs-wrapper {
-                display: inline-flex;
-                align-items: center;
-                gap: 30px;
-
-                input {
-                    width: 350px;
-                    height: 40px;
-
-                    border-radius: 15px;
-                    border: 1px solid rgba(0, 0, 0, 0.2);;
-
-                    font-size: 15px;
-                    padding: 10px 20px;
-                }
-
-                .actions-icon {
-                    align-items: center;
-                    gap: 20px;
-
-                    display: none;
-
-                    i {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        width: 40px;
-                        height: 40px;
-                        
-                        font-size: 15px;
-                        border-radius: 50%;
-                        color: #fff;
-                        background-color: $orangeColor;
-
+            tr {
+    
+                height: 135px;
+                border-bottom: 2px dashed #eee;
+    
+                .thumbnail-wrapper {
+                    width: 220px;
+    
+                    input {
+                        display: none;
+                    }
+                    
+                    img {
+                        width: 183px;
+                        height: 103px;
+                        object-fit: cover;
+        
+                        border-radius: 15px;
                         cursor: pointer;
+    
+                        border: 1px solid #eee;
+                    }
+                }   
+    
+                .title {
+    
+                    p {
+                        width: 350px;
+                        height: 40px;
+    
+                        border-radius: 15px;
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+    
+                        font-size: 15px;
+                        padding: 10px 20px;
+    
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+    
+                }
+    
+                .status {
+                    position: relative;
+    
+                    padding-left: 20px;
+    
+                    &::before {
+                        content: ('');
+                        position: absolute;
+                        top: 50%;
+                        left: -5px;
+    
+                        transform: translateY(-50%);
+                        
+                        display: inline-block;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                    }
+    
+                    &.-public::before {
+                        background: linear-gradient(200deg, $successColor, #00a341);
+                        box-shadow: 0px 2px 3px rgba(0, 200, 80, 0.5);
+                    }
+    
+                    &.-private::before {
+                        background: linear-gradient(200deg, $dangerColor, #e73737);
+                        box-shadow: 0px 2px 3px rgba(255, 68, 68, 0.5);
+                    }
+    
+                    &.-pending::before {
+                        background: linear-gradient(200deg, $yellowColor, #ffb700);
+                        box-shadow: 0px 2px 3px rgba(255, 209, 92, 0.5);
+                    }
 
-                        &:hover {
-                            filter: brightness(0.96);
-                        }
+                    &.-canceled::before {
+                        background: linear-gradient(200deg, $dangerColor, #C20000);
+                        box-shadow: 0px 2px 3px rgba(255, 68, 68, 0.5);
                     }
                 }
-            }
-
-            .status {
-                position: relative;
-
-                padding-left: 20px;
-
-                &::before {
-                    content: ('');
-                    position: absolute;
-                    top: 50%;
-                    left: -5px;
-
-                    transform: translateY(-50%);
-                    
-                    display: inline-block;
-                    width: 15px;
-                    height: 15px;
-                    border-radius: 50%;
+    
+                td:nth-last-child(1) {
+                    text-align: right;
                 }
-
-                &.-publish::before {
-                    background: linear-gradient(200deg, $successColor, #00a341);
-                    box-shadow: 0px 2px 3px rgba(0, 200, 80, 0.5);
-                }
-
-                &.-private::before {
-                    background: linear-gradient(200deg, $dangerColor, #e73737);
-                    box-shadow: 0px 2px 3px rgba(255, 68, 68, 0.5);
-                }
-            }
-
-            td:nth-last-child(1) {
-                text-align: right;
             }
         }
+
     }
 
     .modal-content.-editVideo {
@@ -174,18 +163,24 @@
                     }
                 }
 
-                .buttons-wrapper {
-                    grid-column: 1/ -1;
-                    
+                .actions-button-wrapper {
+
                     display: flex;
                     align-items: center;
+                    justify-content: flex-start;
+                    gap: 20px;
 
-                    gap: 15px;
+                    grid-column: span 2;
 
                     button {
-                        width: 100px;
-                        height: 34px;
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                        padding: 0;
+                        font-size: 16px;
                     }
+
+                    display: none;
                 }
             }
     
@@ -212,8 +207,16 @@
 
             .actions-element {
 
-                button + button {
-                    margin-left: 10px;
+                button {
+
+                    i {
+                        margin-left: 15px;
+                    }
+
+                    & + button {
+                        margin-left: 10px;
+                    }
+
                 }
 
             }

@@ -13,7 +13,7 @@
 
     <img 
         class="main-user-icon" 
-        src="{{$source ?? asset('assets/images/users/default.jpg')}}"
+        src="{{$source}}"
         alt="Ícone de Usuário" 
         style="width: {{$size}}; height: {{$size}}"
     >

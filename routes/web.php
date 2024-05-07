@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VideoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 
@@ -25,9 +26,9 @@ Route::middleware('checkLoggedIn')->group(function() {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/watch', [HomeController::class, 'watch'])->name('watch');
-
     Route::get('/search', [HomeController::class, 'search'])->name('search');
+
+    Route::get('/watch', [VideoController::class, 'watch'])->name('watch');
 
     // Profile
     Route::prefix('user')->group(function() {
@@ -36,13 +37,13 @@ Route::middleware('checkLoggedIn')->group(function() {
 
         Route::get('/profile/videos', [UserController::class, 'videos'])->name('videos');
 
-        Route::get('/{username}', [UserController::class, 'findUser'])->name('findUser');
+        Route::get('/@{username}', [UserController::class, 'findUserView'])->name('findUser');
 
     });
 
 
     // Admin
-    Route::prefix('admin')->group(function() {
+    Route::prefix('admin')->middleware('admin')->group(function() {
 
         Route::get('/', [AdminHomeController::class, 'index'])->name('admin-home');
 

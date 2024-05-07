@@ -17,6 +17,19 @@ class CheckLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        return !Auth::check() ? redirect()->route('login') : $next($request);
+
+        $user = Auth::user();
+
+        if ($user && $user->status == 1) {
+
+            return $next($request);
+
+        } else {
+
+            Auth::logout();
+
+            return redirect()->route('login');
+
+        }
     }
 }

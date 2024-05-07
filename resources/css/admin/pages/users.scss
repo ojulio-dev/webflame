@@ -1,4 +1,10 @@
 .page-content.-users {
+
+    .main-admin-table tr td:nth-child(1) img {
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
+    }
     
     .main-modal.-reportedUsers {
         

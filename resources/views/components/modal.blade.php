@@ -1,4 +1,16 @@
-<div class="main-modal -{{$modalName}}">
+<div class="main-modal -{{$modalName}}"
+
+    @if (isset($attributes) && count($attributes))
+
+        @foreach ($attributes as $key => $attribute)
+            
+            data-{{$key}}="{{$attribute}}"
+
+        @endforeach
+
+    @endif
+
+>
     <div class="modal-exit"></div>
 
     <div class="modal-items">
@@ -9,5 +21,6 @@
         </div>
 
         <div class="modal-content -{{$modalName}}">{{$slot}}</div>
+
     </div>
 </div>

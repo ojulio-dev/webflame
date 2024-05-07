@@ -10,6 +10,8 @@ $(document).ready(function() {
 
             menuElement.css('display', 'flex');
 
+            showCloseElements();
+
         } else {
 
             menuElement.hide();

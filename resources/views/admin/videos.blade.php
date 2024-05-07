@@ -1,110 +1,3 @@
-@php
-    
-    $videos = [
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Moyo Shoyo",
-            "title" => "Título do Vídeo 1"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 2",
-            "title" => "Título do Vídeo 2"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 3",
-            "title" => "Título do Vídeo 3"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 4",
-            "title" => "Título do Vídeo 4"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 5",
-            "title" => "Título do Vídeo 5"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 6",
-            "title" => "Título do Vídeo 6"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 7",
-            "title" => "Título do Vídeo 7"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 8",
-            "title" => "Título do Vídeo 8"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 9",
-            "title" => "Título do Vídeo 9"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 10",
-            "title" => "Título do Vídeo 10"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Moyo Shoyo",
-            "title" => "Título do Vídeo 1"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 2",
-            "title" => "Título do Vídeo 2"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 3",
-            "title" => "Título do Vídeo 3"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 4",
-            "title" => "Título do Vídeo 4"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 5",
-            "title" => "Título do Vídeo 5"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 6",
-            "title" => "Título do Vídeo 6"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 7",
-            "title" => "Título do Vídeo 7"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 8",
-            "title" => "Título do Vídeo 8"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 9",
-            "title" => "Título do Vídeo 9"
-        ],
-        [
-            "userIcon" => "default.jpg",
-            "channel" => "Canal 10",
-            "title" => "Título do Vídeo 10"
-        ]
-    ];
-
-@endphp 
-
 @extends('layouts.admin', ['title' => 'Vídeos', 'page' => 'videos'])
 
 @section('head')
@@ -118,19 +11,19 @@
     <section class="main-section -videosFilter">
         <h2>Aprovação de Vídeos</h2>
 
-        @component('components.admin.adminTable')
-            @foreach($videos as $index => $video)
+        @component('components.admin.adminTable', ['totalItems' => count($dataVideo['pending'])])
+            @foreach($dataVideo['pending'] as $index => $video)
 
                 <tr {!! $index > 4 ? 'style="display: none;"' : '' !!}>
                     <td>
-                        <img src="{{asset('assets/images/users\/') . $video['userIcon']}}" alt="Ícone do Usuário">
+                        <img src="{{asset('assets/images/thumbnails/' . $video['thumbnail'])}}" alt="Ícone do Usuário">
                     </td>
         
                     <td>{{$video['channel']}}</td>
         
                     <td>{{$video['title']}}</td>
         
-                    <td> @include('components.button', ['text' => 'Validar', 'classes' => 'validate-button']) </td>
+                    <td> @include('components.button', ['text' => 'Validar', 'classes' => 'validate-button', 'attributes' => ['id' => $video['id']]]) </td>
                 </tr>
 
             @endforeach
@@ -140,52 +33,50 @@
     <section class="main-section -reportedVideos">
         <h2>Vídeos denunciados</h2>
 
-        @component('components.admin.adminTable')
-            @foreach($videos as $index => $video)
+        @component('components.admin.adminTable', ['totalItems' => count($dataVideo['reported'])])
+
+            @foreach($dataVideo['reported'] as $index => $video)
 
                 <tr {!! $index > 4 ? 'style="display: none;"' : '' !!}>
                     <td>
-                        <img src="{{asset('assets/images/users\/') . $video['userIcon']}}" alt="Ícone do Usuário">
+                        <img src="{{asset('assets/images/thumbnails\/') . $video->video['thumbnail']}}" alt="Thumbnail do Vídeo">
                     </td>
         
-                    <td>{{$video['channel']}}</td>
+                    <td>{{$video->video->title}}</td>
         
-                    <td>{{$video['title']}}</td>
-        
-                    <td> @include('components.button', ['text' => 'Avaliar', 'classes' => 'reported-videos-modal']) </td>
+                    <td> @include('components.button', ['text' => 'Avaliar', 'classes' => 'reported-videos-modal', 'attributes' => ['id' => $video['id']]]) </td>
                 </tr>
 
             @endforeach
+
         @endcomponent
     </section>
 
-    @component('components.admin.videoModal')
+    @component('components.admin.videoModal', ['attributes' => ['video-id' => '#']])
 
         @slot('name') validateVideos @endslot
 
         @slot('title') Validação de Vídeos <i class="fa-solid fa-check"></i> @endslot
 
-        @include('components.videoPlayer', ['dataPoster' => 'https://pbs.twimg.com/media/DvXIEK0WwAAVdLc.png'])
-
-
+        @include('components.videoPlayer', ['dataPoster' => asset('assets/images/thumbnails/default.png'), 'video' => '#'])
     
         <ul class="infos-wrapper">
-            <li>
+            <li id="validate-info-channel">
                 <h4>Canal:</h4> 
 
-                <p><a href="{{route('findUser', ['username' => '@moyoshoyo'])}}" target="_blank">@moyoshoyo</a></p>
+                <p><a href="#" target="_blank"></a></p>
             </li>
 
-            <li>
+            <li id="validate-info-title">
                 <h4>Título do Vídeo:</h4>
 
-                <p>Um título de Vídeo legal :D</p>
+                <p></p>
             </li>
             
-            <li class="description">
+            <li class="description" id="validate-info-description">
                 <h4>Descrição:</h4>
                 
-                <p>obrigado por assistir :D <br><br> Twitter e Discord: @moyoshoyo</p>
+                <p></p>
             </li>
         </ul>
 
@@ -198,43 +89,43 @@
         </div>
     @endcomponent
 
-    @component('components.admin.videoModal')
+    @component('components.admin.videoModal', ['attributes' => ['reported-video' => '#']])
 
         @slot('name') reportedVideos @endslot
 
         @slot('title') Vídeos Denunciados <i class="fa-solid fa-triangle-exclamation"></i> @endslot
 
-        @include('components.videoPlayer', ['dataPoster' => 'https://pbs.twimg.com/media/DvXIEK0WwAAVdLc.png'])
+        @include('components.videoPlayer', ['dataPoster' => asset('assets/images/thumbnails/default.png'), 'video' => '#'])
     
         <ul class="infos-wrapper">
-            <li>
+            <li id="reported-by">
                 <h4>Denunciado por:</h4> 
 
-                <p><a href="{{route('findUser', ['username' => '@moyoshoyo'])}}" target="_blank">@moyoshoyo</a></p>
+                <p>#</p>
             </li>
 
-            <li>
+            <li id="reported-reason">
                 <h4>Motivo:</h4>
 
-                <p>Esse vídeo não me parece confiavel 🤬</p>
+                <p class="main-textarea-input">#</p>
             </li>
 
-            <li>
+            <li id="reported-user">
                 <h4>Canal denunciado:</h4> 
 
-                <p><a href="{{route('findUser', ['username' => '@moyoshoyo'])}}" target="_blank">@ojuliocesar</a></p>
+                <p>#</p>
             </li>
 
-            <li>
+            <li id="reported-title">
                 <h4>Título do Vídeo:</h4>
 
-                <p>Um título de Vídeo legal :D</p>
+                <p>#</p>
             </li>
             
-            <li class="description">
+            <li class="description" id="reported-description">
                 <h4>Descrição:</h4>
                 
-                <p>obrigado por assistir :D <br><br> Twitter e Discord: @moyoshoyo</p>
+                <p class="main-textarea-input">#</p>
             </li>
         </ul>
 

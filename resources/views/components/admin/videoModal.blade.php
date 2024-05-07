@@ -1,4 +1,16 @@
-<div class="main-modal-videos -{{$name}}">
+<div class="main-modal-videos -{{$name}}"
+
+    @if (isset($attributes) && count($attributes))
+
+        @foreach ($attributes as $key => $value)
+
+            data-{{$key}}="{{$value}}"
+
+        @endforeach
+
+    @endif
+
+>
 
     <div class="modal-close"></div>
 

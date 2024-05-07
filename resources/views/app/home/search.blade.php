@@ -1,127 +1,3 @@
-@php
-
-$videosSearch = [
-    [
-        'title' => 'Construindo o SISTEMA SOLAR no Minecraft - Em busca da casa automática #352',
-        'thumbnail' => 'viniccius13.png',
-        'canalName' => 'Viniccius13',
-        'canalIcon' => 'viniccius13.png',
-        'timeStamp' => '5 dias'
-    ],
-    [
-        'title' => 'A Fantástica Farm de Morcego | O Filme | - Minecraft Em busca da casa automática #353',
-        'thumbnail' => 'vin13.jpg',
-        'canalName' => 'Viniccius13',
-        'canalIcon' => 'viniccius13.png',
-        'timeStamp' => '2 semanas'  
-    ],
-    [
-            'title' => 'Construindo o SISTEMA SOLAR no Minecraft - Em busca da casa automática #352',
-            'thumbnail' => 'viniccius13.png',
-            'canalName' => 'Viniccius13',
-            'canalIcon' => 'viniccius13.png',
-            'timeStamp' => '5 dias'
-        ],
-        [
-            'title' => 'A Fantástica Farm de Morcego | O Filme | - Minecraft Em busca da casa automática #353',
-            'thumbnail' => 'vin13.jpg',
-            'canalName' => 'Viniccius13',
-            'canalIcon' => 'viniccius13.png',
-            'timeStamp' => '2 semanas'  
-        ],
-        [
-        'title' => 'Construindo o SISTEMA SOLAR no Minecraft - Em busca da casa automática #352',
-        'thumbnail' => 'viniccius13.png',
-        'canalName' => 'Viniccius13',
-        'canalIcon' => 'viniccius13.png',
-        'timeStamp' => '5 dias'
-    ],
-    [
-        'title' => 'A Fantástica Farm de Morcego | O Filme | - Minecraft Em busca da casa automática #353',
-        'thumbnail' => 'vin13.jpg',
-        'canalName' => 'Viniccius13',
-        'canalIcon' => 'viniccius13.png',
-        'timeStamp' => '2 semanas'  
-    ],
-    [
-            'title' => 'Construindo o SISTEMA SOLAR no Minecraft - Em busca da casa automática #352',
-            'thumbnail' => 'viniccius13.png',
-            'canalName' => 'Viniccius13',
-            'canalIcon' => 'viniccius13.png',
-            'timeStamp' => '5 dias'
-        ],
-        [
-            'title' => 'A Fantástica Farm de Morcego | O Filme | - Minecraft Em busca da casa automática #353',
-            'thumbnail' => 'vin13.jpg',
-            'canalName' => 'Viniccius13',
-            'canalIcon' => 'viniccius13.png',
-            'timeStamp' => '2 semanas'  
-        ]
-];
-
-$profiles = [
-    [
-        'name' => 'Viniccius13',
-        'subs' => '4.560.50',
-        'icon' => 'https://e0.pxfuel.com/wallpapers/904/967/desktop-wallpaper-about-girl-in-anime-icons.jpg'
-    ],
-    [
-        'name' => 'DaviGamer',
-        'subs' => '1.400.50',
-        'icon' => 'https://i.pinimg.com/236x/72/62/7c/72627cbe125003ce7cedf877e1d7766e.jpg'
-    ],
-    [
-        'name' => 'Viniccius13',
-        'subs' => '4.560.50',
-        'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwpeJaeMm_m1F61hGBjB0qXrBm-9JDi5_4-Q&usqp=CAU'
-    ],
-    [
-        'name' => 'DaviGamer',
-        'subs' => '1.400.50',
-        'icon' => 'https://pbs.twimg.com/media/FhDY4nKWAAAmoY6.jpg'
-    ],[
-        'name' => 'Viniccius13',
-        'subs' => '4.560.50',
-        'icon' => 'https://media.tenor.com/DDOLg4aNjTwAAAAd/anime-anime-boy.gif'
-    ],
-    [
-        'name' => 'DaviGamer',
-        'subs' => '03',
-        'icon' => 'https://pm1.aminoapps.com/7846/c29aa598cbbc46b4ffbd23e447046fb6ee195b70r1-300-300v2_00.jpg'
-],
-[
-        'name' => 'Viniccius13',
-        'subs' => '4.560.50',
-        'icon' => 'https://e0.pxfuel.com/wallpapers/904/967/desktop-wallpaper-about-girl-in-anime-icons.jpg'
-    ],
-    [
-        'name' => 'DaviGamer',
-        'subs' => '1.400.50',
-        'icon' => 'https://i.pinimg.com/236x/72/62/7c/72627cbe125003ce7cedf877e1d7766e.jpg'
-    ],
-    [
-        'name' => 'Viniccius13',
-        'subs' => '4.560.50',
-        'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwpeJaeMm_m1F61hGBjB0qXrBm-9JDi5_4-Q&usqp=CAU'
-    ],
-    [
-        'name' => 'DaviGamer',
-        'subs' => '1.400.50',
-        'icon' => 'https://pbs.twimg.com/media/FhDY4nKWAAAmoY6.jpg'
-    ],[
-        'name' => 'Viniccius13',
-        'subs' => '4.560.50',
-        'icon' => 'https://media.tenor.com/DDOLg4aNjTwAAAAd/anime-anime-boy.gif'
-    ],
-    [
-        'name' => 'DaviGamer',
-        'subs' => '03',
-        'icon' => 'https://pm1.aminoapps.com/7846/c29aa598cbbc46b4ffbd23e447046fb6ee195b70r1-300-300v2_00.jpg'
-    ]
-];
-
-@endphp
-
 @extends('layouts.app', ['title' => 'Pesquisa', 'page' => 'search', 'search' => true])
 
 @section('head')
@@ -133,32 +9,54 @@ $profiles = [
 @section('main')
     
     @component('components.title')
-        Resultado <i class="fa-solid fa-arrow-right"></i>
+    
+        Resultados <i class="fa-solid fa-arrow-right"></i>
 
-        @slot('secondaryContent') vinicius 13 @endslot
+        @slot('secondaryContent') {{$_GET['q']}} @endslot
+        
     @endcomponent
 
+    @if (count($users))
+        <div class="results-wrapper">
+            <h4>{{count($users) . (count($users) == 1 ? ' resultado de usuário' : ' resultados de usuários')}}</h4>
 
-    <div class="main-profiles-wrapper">
-        <h4>8 resultados de canais</h4>
+            <ul class="owl-carousel">
+                @foreach($users as $user)
+                    <li class="element-profile">
+                        <a href="{{route('findUser', ['username' => $user['username']])}}">
+                            <img src="{{asset('assets/images/users/' . $user['icon'])}}" alt="Ícone do Canal">
+                            <div class="infos-wrapper">
+                                <h3>{{$user['name']}}</h3>
+                            
+                                <small>{{$user['subscribers'] . ($user['subscribers'] == 1 ? ' inscrito' : ' inscritos')}}</small>
+                            </div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-        <ul class="owl-carousel">
-            @foreach($profiles as $profile)
-                <li class="element-profile">
-                    <a href="#">
-                        <img src="{{$profile['icon']}}" alt="Ícone do Canal">
-                        <div class="infos-wrapper">
-                            <h3>{{$profile['name']}}</h3>
-                        
-                            <small>{{$profile['subs']}} inscritos</small>
-                        </div>
-                    </a>
-                </li>
-            @endforeach
-        </ul>
-    </div>
+    @if (count($videos))
+        <div class="results-wrapper">
 
-    @include('components.cardVideo', ['videos' => $videosSearch, 'showTitle' => true])
+            <h4>{{count($videos) . (count($videos) == 1 ? ' resultado de vídeo' : ' resultados de vídeos')}}</h4>
+
+            @include('components.cardVideo', ['videos' => $videos])
+
+        </div>
+    @endif
+
+    @if (!count($videos) && !count($users))
+
+        <div class="not-found">
+
+            <h4>A sua pesquisa não retornou resultados.</h4>
+
+            @include('components.button', ['text' => 'Voltar à Home', 'link' => route('home')])
+        </div>
+
+    @endif
 
 @endsection
 

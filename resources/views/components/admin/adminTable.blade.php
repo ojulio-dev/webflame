@@ -7,7 +7,7 @@
 
         <i class="fa-solid fa-chevron-up disabled" data-action="less"></i>
 
-        <i class="fa-solid fa-chevron-down" data-action="more"></i>
+        <i class="fa-solid fa-chevron-down {{$totalItems <= 5 ? 'disabled' : ''}}" data-action="more"></i>
 
     </div>
 </div>

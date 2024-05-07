@@ -12,7 +12,7 @@
                 <input type="email" name="email" id="email" placeholder="E-mail">
 
                 @if ($errors->get('email'))
-                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('email')[0]}}</p>
+                    <p class="main-alert"><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('email')[0]}}</p>
                 @endif
             </div>
 
@@ -20,9 +20,15 @@
                 <input type="password" name="password" id="password" placeholder="Senha">
 
                 @if ($errors->get('password'))
-                    <p><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('password')[0]}}</p>
+                    <p class="main-alert"><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('password')[0]}}</p>
                 @endif
             </div>
+
+            @if ($errors->get('loginFailed'))
+
+                <p class="main-alert"><i class="fa-solid fa-circle-exclamation"></i> {{$errors->get('loginFailed')[0]}}</p>
+
+            @endif
 
         @endslot
 

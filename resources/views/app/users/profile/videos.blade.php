@@ -1,64 +1,3 @@
-@php
-
-$videos = [
-    [
-        'title' => 'Yukirito e a jogada do Ninja',
-        'thumbnail' => 'yukirito.png',
-        'canalName' => 'Yukirito',
-        'canalIcon' => 'yukirito.png',
-        'description' => 'algumacoisa',
-        'timeStamp' => '13 horas',
-        'viewing_status' => 0
-    ],
-    [
-        'title' => 'Naruto Shippuden Openings 1-20 (HD)',
-        'thumbnail' => 'naruto.png',
-        'canalName' => 'Crunchyroll',
-        'canalIcon' => 'crunchyroll.png',
-        'description' => 'algumacoisa',
-        'timeStamp' => '4 anos',
-        'viewing_status' => 1
-    ],
-    [
-        'title' => 'a cada kill eu troco de MOUSE no HG',
-        'thumbnail' => 'spop.png',
-        'canalName' => 'Spop',
-        'canalIcon' => 'spop.png',
-        'description' => 'algumacoisa',
-        'timeStamp' => '14 dias',
-        'viewing_status' => 1
-    ],
-    [
-        'title' => 'A LENDA DE FABINHO E SCARLAITI DE ORR',
-        'thumbnail' => 'alan.png',
-        'canalName' => 'Alanzoka',
-        'canalIcon' => 'alan.png',
-        'description' => 'algumacoisa',
-        'timeStamp' => '5 anos',
-        'viewing_status' => 0
-    ],
-    [
-        'title' => "GTA COM 4 PESSOAS (no modo história '-')",
-        'thumbnail' => 'saiko.png',
-        'canalName' => 'Saiko Joga',
-        'canalIcon' => 'saiko.png',
-        'description' => 'algumacoisa',
-        'timeStamp' => '3 anos',
-        'viewing_status' => 1
-    ],
-    [
-        'title' => 'Construindo o SISTEMA SOLAR no Minecraft - Em busca da casa automática #352',
-        'thumbnail' => 'viniccius13.png',
-        'canalName' => 'Viniccius13',
-        'canalIcon' => 'viniccius13.png',
-        'description' => 'algumacoisa',
-        'timeStamp' => '5 dias',
-        'viewing_status' => 0
-    ]
-];
-
-@endphp
-
 @extends('layouts.app', ['title' => 'Meus vídeos', 'page' => 'videos'])
 
 @section('main')
@@ -76,55 +15,60 @@ $videos = [
     </div>
 
     <h2>Vídeos</h2>
-    <table class="videos-wrapper">
-        @foreach($videos as $video)
-            <tr>
-                <td class="thumbnail-wrapper">
-                    <a href="{{route('watch')}}">
-                        <img src="{{asset('assets/images/thumbnails/' . $video['thumbnail'])}}" alt="Thumbnail">
-                    </a>
-                </td>
 
-                <td>
-                    <div class="inputs-wrapper">
-                        <input type="text" title="{{$video['title']}}" value="{{$video['title']}}" data-default="{{$video['title']}}">
+    <div class="videos-wrapper">
+        @if (count($videos))
 
-                        <div class="actions-icon">
-                            <i class="fa-solid fa-floppy-disk save"></i>
-                            <i class="fa-solid fa-rotate-left reverse"></i>
-                        </div>
-                    </div>
-                </td>
+            <table>
+                @foreach($videos as $video)
 
-                <td>103 visualizações</td>
+                    <tr data-video="{{$video->id}}">
+                        <td class="thumbnail-wrapper">
+                            <a href="{{route('watch', ['video' => $video['id']])}}">
+                                <img src="{{asset('assets/images/thumbnails/' . $video['thumbnail'])}}" alt="Thumbnail">
+                            </a>
+                        </td>
 
-                <td class="status -{{$video['viewing_status'] ? 'publish' : 'private'}}">{{$video['viewing_status'] ? 'Público' : 'Privado'}}</td>
+                        <td class="title">
+                            <p title="{{$video->title}}">{{$video->title}}</p>
+                        </td>
 
-                <td>
-                    @include('components.button', ['text' => 'Mais informações', 'classes' => 'open-modal', 'modal' => 'editVideo'])
-                </td>
-            </tr>
-        @endforeach
-    </table>
+                        <td>{{$video->views_count}}</td>
 
+                        <td class="status -{{$video->status['name']}}">{{$video->status['name']}}</td>
+
+                        <td>
+                            @include('components.button', ['text' => 'Mais informações', 'classes' => 'more-info-video', 'modal' => 'editVideo'])
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+
+        @else
+
+            @include('components.smallMessage', ['slot' => 'Pô, nos contaram que tu ainda não publicou nenhum vídeo, tá moscando? Clica no botão ae vei'])
+
+        @endif
+    </div>
+
+    {{-- Edit video Modal --}}
     @component('components.modal')
         @slot('modalName') editVideo @endslot
 
         @slot('title') Mais informações @endslot
 
         
-        <section>
+        <section class="infos-wrapper">
             <h2>Editar informações</h2>
 
             <div class="editing-element">
                 @include('components.editImage', [
                     'width' => '100%',
                     'height' => '290px',
-                    'identifier' => 'editing-thumbnail',
-                    'src' => 'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/312692089/original/7820d34cdbd72359a23e6f1bb0f67af43b70b0b4.png'
+                    'identifier' => 'editing-thumbnail'
                 ])
     
-                <div class="inputs-wrapper">
+                <form class="inputs-wrapper" action="#">
                     
                     @component('components.input')
                         @slot('identifier') editing-title @endslot
@@ -136,8 +80,6 @@ $videos = [
                         @slot('inputType') text @endslot
 
                         @slot('placeholder') Um título feliz @endslot
-
-                        @slot('value') Como ganhar dinheiro do jeito certo no youtube! @endslot
                         
                     @endcomponent
     
@@ -151,22 +93,26 @@ $videos = [
 
                         @slot('placeholder') Uma descrição legal @endslot
 
-                        @slot('value') Deixa o like pls @endslot
-
                     @endcomponent
     
-                </div>
+                </form>
 
-                <div class="buttons-wrapper">
+                <div class="actions-button-wrapper">
+
                     @component('components.button')
-                        @slot('text') <i class="fa-solid fa-check"></i> @endslot
-                        @slot('classes') cleanHover @endslot
+
+                        @slot('text') <i class="fa-solid fa-paintbrush"></i> @endslot
+                        @slot('classes') save @endslot
+
                     @endcomponent
 
                     @component('components.button')
+
                         @slot('text') <i class="fa-solid fa-rotate-left"></i> @endslot
-                        @slot('classes') cleanHover @endslot
+                        @slot('classes') discart @endslot
+
                     @endcomponent
+
                 </div>
             </div>
         </section>
@@ -175,36 +121,37 @@ $videos = [
             <h2>Interações</h2>
 
             <ul class="interactions-element">
+                @foreach ($interactions as $interaction)
+                    
                 <li>
-                    <p>32</p>
-                    <img src="{{asset('assets/images/icons/emojis/love.png')}}">
+                    <p>0</p>
+                    <img src="{{asset('assets/images/interactions/' . $interaction['icon'])}}">
                 </li>
 
-                <li>
-                    <p>32</p>
-                    <img src="{{asset('assets/images/icons/emojis/laugh.png')}}">
-                </li>
-
-                <li>
-                    <p>32</p>
-                    <img src="{{asset('assets/images/icons/emojis/cry.png')}}">
-                </li>
-
-                <li>
-                    <p>32</p>
-                    <img src="{{asset('assets/images/icons/emojis/rage.png')}}">
-                </li>
+                @endforeach
             </ul>
         </section>
 
-        <section>
+        <section class="actions-wrapper">
             <h2>Ações</h2>
 
             <div class="actions-element">
 
-                @include('components.button', ['text' => 'Privar vídeo', 'classes' => 'cleanHover'])
+                @component('components.button')
 
-                @include('components.button', ['text' => 'Remover vídeo', 'classes' => 'cleanHover'])
+                    @slot('text') Privar vídeo <i class="fa-solid fa-lock"></i> @endslot
+
+                    @slot('id') deprive-video-button @endslot
+                    
+                @endcomponent
+
+                @component('components.button')
+
+                    @slot('text') Remover vídeo <i class="fa-solid fa-trash-can"></i> @endslot
+                    
+                    @slot('id') delete-video-button @endslot
+
+                @endcomponent
 
             </div>
         </section>
@@ -217,9 +164,11 @@ $videos = [
 
         @slot('title') Upload de Vídeos @endslot
 
+        @slot('alert') *Aceitamos vídeos com no máximo 1GB @endslot
+
         @slot('progress') true @endslot
 
-        <form method="POST" class="upload-video-wrapper">
+        <form method="POST" class="upload-video-wrapper" enctype="multipart/form-data">
             <div class="send-video-wrapper">
                 <label class="labelImage" for="uploadVideo"><img src="{{asset('assets/images/icons/upload.png')}}"></label>
             
@@ -263,7 +212,9 @@ $videos = [
                 <input class="input-send-thumbnail" style="display: none;" type="file" accept="image/*" name="thumbnail-create" id="thumbnail-create">
 
                 @include('components.button', [
-                    'text' => 'Continuar'
+                    'text' => 'Continuar',
+                    'type' => 'submit',
+                    'id' => 'send-video-button'
                 ])
         
             </div>
