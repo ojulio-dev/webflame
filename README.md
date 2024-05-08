@@ -21,22 +21,27 @@ composer install
 npm install
 ```
 
-4. Criar a Database do projeto;
+4. Compilar os arquivos CSS;
+```
+npm run build
+```
+
+5. Criar a Database do projeto;
 ```
 php artisan migrate
 ```
 
-5. Gerar as Seeders do projeto;
+6. Gerar as Seeders do projeto;
 ```
-php artisan db:Seed
+php artisan db:seed
 ```
 
-6. Iniciar o servidor
+7. Iniciar o servidor;
 ```
 php artisan serve
 ```
 
-7. Abrir o navegador e acessar http://localhost:8000
+8. Abrir o navegador e acessar http://localhost:8000
 
 
 ### License
