@@ -17,13 +17,13 @@ $(document).ready(function() {
 
                     $('.comment-element ul').append(`
                         <li>
-                            <a href="http://webflame.com/user/@${comment.user.username}">
-                                <img class="main-user-icon" src="http://webflame.com/assets/images/users/${comment.user.icon}" alt="Ícone de Usuário" style="width: 45px; height: 45px">
+                            <a href="${APP_PATH}/user/@${comment.user.username}">
+                                <img class="main-user-icon" src="${APP_PATH}/assets/images/users/${comment.user.icon}" alt="Ícone de Usuário" style="width: 45px; height: 45px">
                             </a>
 
                             <div class="important-infos">
                                 <div>
-                                    <a href="http://webflame.com/user/@${comment.user.username}">${comment.user.name} ${comment.user.id == comment.video.user.id && '<span>(Author)</span>'}</a>
+                                    <a href="${APP_PATH}/user/@${comment.user.username}">${comment.user.name} ${comment.user.id == comment.video.user.id && '<span>(Author)</span>'}</a>
 
                                     <small>${comment.dataDiff}</small>
                                 </div>

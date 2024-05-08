@@ -71,7 +71,7 @@ $(document).ready(function() {
                                     Verificar
             
                                     <div class="loader-wrapper">
-                                        <img src="http://webflame.com/assets/images/loaders/loader_button.gif">
+                                        <img src="${APP_PATH}/assets/images/loaders/loader_button.gif">
                                     </div>
             
                                 </button>

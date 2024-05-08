@@ -42,7 +42,7 @@ $(document).ready(function() {
                                                 Mais informações
 
                                                 <div class="loader-wrapper">
-                                                    <img src="http://webflame.com/assets/images/loaders/loader_button.gif">
+                                                    <img src="${APP_PATH}/assets/images/loaders/loader_button.gif">
                                                 </div>
                                             </button>
                                         </td>
@@ -238,7 +238,7 @@ $(document).ready(function() {
                             Privar vídeo <i class="fa-solid fa-lock"></i>
 
                             <div class="loader-wrapper">
-                                <img src="http://webflame.com/assets/images/loaders/loader_button.gif">
+                                <img src="${APP_PATH}/assets/images/loaders/loader_button.gif">
                             </div>
                         </button>`;
 
@@ -248,7 +248,7 @@ $(document).ready(function() {
                             Publicar vídeo <i class="fa-solid fa-circle-check"></i>
 
                             <div class="loader-wrapper">
-                                <img src="http://webflame.com/assets/images/loaders/loader_button.gif">
+                                <img src="${APP_PATH}/assets/images/loaders/loader_button.gif">
                             </div>
                         </button>`;
 
@@ -261,7 +261,7 @@ $(document).ready(function() {
                     Remover vídeo <i class="fa-solid fa-trash-can"></i>
 
                     <div class="loader-wrapper">
-                        <img src="http://webflame.com/assets/images/loaders/loader_button.gif">
+                        <img src="${APP_PATH}/assets/images/loaders/loader_button.gif">
                     </div>
 
                 </button>`);
