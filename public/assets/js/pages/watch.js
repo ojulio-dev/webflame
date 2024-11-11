@@ -23,7 +23,7 @@ $(document).ready(function() {
 
                             <div class="important-infos">
                                 <div>
-                                    <a href="${APP_PATH}/user/@${comment.user.username}">${comment.user.name} ${comment.user.id == comment.video.user.id && '<span>(Author)</span>'}</a>
+                                    <a href="${APP_PATH}/user/@${comment.user.username}">${comment.user.name} ${comment.user.id == comment.video.user.id ? '<span>(Author)</span>' : ''}</a>
 
                                     <small>${comment.dataDiff}</small>
                                 </div>

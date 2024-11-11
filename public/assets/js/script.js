@@ -150,8 +150,6 @@ $(document).ready(function() {
 
     $('#main-header #navigation-menu-element li .modal-action').click(function() {
 
-        console.log('oi');
-
         $('#main-header .search-and-avatar nav').toggle();
 
         modalAction($('.main-modal.-message-menu'), 'show');

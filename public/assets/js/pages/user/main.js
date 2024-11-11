@@ -34,8 +34,6 @@ $(document).ready(function() {
 
     $('#form-user-infos .action-buttons-wrapper .save').click(function() {
 
-        $('#form-user-infos .action-buttons-wrapper').hide();
-
         const formData = new FormData($('.main-content.-profile #form-user-infos')[0]);
 
         formData.append('icon', $('.infos-wrapper .main-edit-image #userIcon')[0].files[0] ?? '');
@@ -49,17 +47,27 @@ $(document).ready(function() {
             contentType: false,
             success: (data) => {
 
-                data.response ? openFlashMessage(data.message, 'success') : openFlashMessage(data.message, 'error');
+                if (data.response) {
 
-                $('.infos-wrapper #userIcon').val('');
+                    $('#form-user-infos .action-buttons-wrapper').hide();
 
-                userInfos.name = $('.infos-wrapper .user-info-field[name="name"]').val();
+                    openFlashMessage(data.message, 'success')
 
-                userInfos.username = $('.infos-wrapper .user-info-field[name="username"]').val();
+                    $('.infos-wrapper #userIcon').val('');
 
-                userInfos.description = $('.infos-wrapper .user-info-field[name="description"]').val();
+                    userInfos.name = $('.infos-wrapper .user-info-field[name="name"]').val();
 
-                userInfos.userIcon =  $('.infos-wrapper label[for="userIcon"] img').attr('src');
+                    userInfos.username = $('.infos-wrapper .user-info-field[name="username"]').val();
+
+                    userInfos.description = $('.infos-wrapper .user-info-field[name="description"]').val();
+
+                    userInfos.userIcon =  $('.infos-wrapper label[for="userIcon"] img').attr('src');
+
+                } else {
+
+                    openFlashMessage(data.message, 'error');
+
+                }
 
             }
         });

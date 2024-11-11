@@ -174,6 +174,17 @@ class UserController extends Controller
 
         }
 
+        if (User::where('username', $r->username)->count() >= 1) {
+
+            echo json_encode([
+                'message' => 'Já existe alguém com este Username. Tente outro...',
+                'response' => false
+            ]);
+
+            exit();
+
+        }
+
         $data = $r->all();
 
         if ($r->file('icon')) {

@@ -133,7 +133,7 @@
 
                             <div class="important-infos">
                                 <div>
-                                    <a href="{{route('findUser', ['username' => $comment['user']['username']])}}">{{$comment['user']['name']}} {!! $dataVideo['user']['id'] == $globalDataUser['id'] ? "<span>(Author)</span>" : '' !!}</a>
+                                    <a href="{{route('findUser', ['username' => $comment['user']['username']])}}">{{$comment['user']['name']}} {!! $dataVideo['user']['id'] == $comment['user']['id'] ? "<span>(Author)</span>" : "" !!}</a>
 
                                     <small>{{$comment['dataDiff']}}</small>
                                 </div>
