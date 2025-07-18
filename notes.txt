@@ -1,10 +1,6 @@
 próximo passo do chat:
 
-componente sidebar: Conseguir pegar todos os usuários que eu sigo e que já me mandaram uma mensagem.
-
-componente sidebar: trazer pelo created_at.
-
-componente sidebar: fazer o script da troca de selecionado.
+-> componente sidebar: fazer o script da troca de selecionado.
 
 componente message-content: conseguir pegar os dados do usuário clicado.
 

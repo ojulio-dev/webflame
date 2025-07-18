@@ -8,6 +8,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\User;
+
 class CreateUserSeed extends Seeder
 {
     /**
@@ -15,6 +17,7 @@ class CreateUserSeed extends Seeder
      */
     public function run(): void
     {
+
         DB::table('users')->insert([
             [
                 'name' => 'Moyo Shoyo',
@@ -33,5 +36,7 @@ class CreateUserSeed extends Seeder
                 'is_admin' => 0
             ]
         ]);
+
+        User::factory(50)->create();
     }
 }

@@ -1,62 +1,27 @@
 <ul class="sidebar">
 
-    <li class="-selected">
+    @foreach($this->loadMessages() as $message)
 
-        <div class="icon-wrapper">
+        <li wire:click="enterMessage">
 
-            <img src="https://i.pinimg.com/736x/d6/0b/60/d60b60df9147a88c660bc1452385c3a7.jpg" alt="Ícone do Usuário">
+            <div class="icon-wrapper">
 
-            <span>3</span>
+                <img src="{{ asset('assets/images/users/' . $message['icon']) }}" alt="Ícone do Usuário">
 
-        </div>
+                <span>{{ $message['pending_count'] }}</span>
 
+            </div>
 
-        <div class="infos-wrapper">
+            <div class="infos-wrapper">
 
-            <p>Guts</p>
+                <p>{{ $message['name'] }}</p>
 
-            <small>Ah então mano, tinha que tá vendo</small>
+                <small>{{ $message['last_message'] }}</small>
 
-        </div>
+            </div>
 
-    </li>
+        </li>
 
-    <li>
-
-        <div class="icon-wrapper">
-
-            <img src="https://i.pinimg.com/736x/7d/64/c2/7d64c29b20f1ce5296ae39009dc2f615.jpg" alt="Ícone do Usuário">
-
-            <span>31</span>
-
-        </div>
-
-        <div class="infos-wrapper">
-
-            <p>Griffith</p>
-
-            <small>Cala boca aí tio, fica suave ai parceirinho</small>
-
-        </div>
-
-    </li>
-
-    <li>
-
-        <div class="icon-wrapper">
-
-            <img src="https://i.pinimg.com/736x/c5/a9/68/c5a968eb0a92b427ca26646cf55526bb.jpg" alt="Ícone do Usuário">
-
-        </div>
-
-        <div class="infos-wrapper">
-
-            <p>Zoro</p>
-
-            <small>Forte abraço</small>
-
-        </div>
-
-    </li>
+    @endforeach
 
 </ul>
