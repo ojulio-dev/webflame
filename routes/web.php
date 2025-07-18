@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminVideoController;
 
+use App\Livewire\Chat;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +52,12 @@ Route::middleware('checkLoggedIn')->group(function() {
         Route::get('/users', [AdminUserController::class, 'index'])->name('admin-users');
         
         Route::get('/videos', [AdminVideoController::class, 'index'])->name('admin-videos');
+
+    });
+
+    Route::prefix('chat')->group(function() {
+
+        Route::get('/', Chat\Application::class)->name('application');
 
     });
 });

@@ -1,0 +1,79 @@
+#main-chat {
+    
+    .sidebar {
+
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        li {
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            width: 250px;
+            cursor: pointer;
+
+
+            .icon-wrapper {
+
+                position: relative;
+
+                img {
+
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+
+                }
+
+                span {
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    width: 1px;
+                    height: 1px;
+
+                    padding: 12px;
+                    border-radius: 50%;
+
+                    background: $orangeColor;
+                    color: white;
+
+                    font-size: 12px;
+
+                    position: absolute;
+                    top: -7px;
+                    left: -7px;
+
+                }
+
+            }
+
+            .infos-wrapper {
+
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                user-select: none;
+
+            }
+
+            &.-selected {
+
+                padding: 5px 10px;
+                background: #f2f2f2;
+                border-radius: 5px;
+
+            }
+
+        }
+
+
+    }
+    
+}

@@ -1,0 +1,24 @@
+#main-chat {
+
+    display: flex !important;
+
+    .modal-items {
+        max-height: none;
+        width: 80%;
+
+    }
+
+    .modal-content {
+
+        height: 100%;
+
+    }
+
+    .messages-wrapper {
+
+        display: flex;
+        gap: 35px;
+        
+    }
+
+}

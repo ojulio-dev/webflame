@@ -39,3 +39,13 @@
     @import 'components/authForm.scss';
 
 }
+
+#main-livewire {
+
+    background: red;
+
+    @import 'livewire/chat/application.scss';
+    @import 'livewire/chat/sidebar.scss';
+    @import 'livewire/chat/message-content.scss';
+
+}

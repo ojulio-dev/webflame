@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        View::composer(['app.*', 'admin.*', 'layouts.app'], function($view) {
+        View::composer(['app.*', 'admin.*', 'layouts.app', 'livewire.*'], function($view) {
             
             $data = [];
             

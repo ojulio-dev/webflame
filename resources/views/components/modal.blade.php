@@ -1,4 +1,8 @@
-<div class="main-modal -{{$modalName}}"
+<div 
+    
+    class="main-modal -{{$modalName}}"
+
+    id="{{$modalName}}"
 
     @if (isset($attributes) && count($attributes))
 
