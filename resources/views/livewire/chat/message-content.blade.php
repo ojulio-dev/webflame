@@ -1,153 +1,78 @@
 <div class="message-content">
 
-    <div class="header">
-        <div class="icon-wrapper">
+    @if ( $this->contextUser && $this->contextMessages )
+        <div class="header">
+            <div class="icon-wrapper">
 
-            @include('components.userIcon', [
-                'size' => '75px',
-                'source' => 'https://i.pinimg.com/736x/d6/0b/60/d60b60df9147a88c660bc1452385c3a7.jpg'
-            ])
-            
+                @include('components.userIcon', [
+                    'size' => '60px',
+                    'source' => asset('assets/images/users/' . $this->contextUser->icon)
+                ])
+                
+            </div>
+
+            <div class="infos-wrapper">
+                <h4>{{ $this->contextUser->name }}</h4>
+            </div>
         </div>
 
-        <div class="infos-wrapper">
-            <h4>Gutsu</h4>
+        <ul
+            class="messages-wrapper"
+            x-data="{
+                scrollToBottom() {
+                    if ($refs['messages-wrapper']) {
+                        $refs['messages-wrapper'].scrollTop = $refs['messages-wrapper'].scrollHeight;
+                    }
+                },
+                init() {
+                    this.scrollToBottom();
+                    window.addEventListener('updated-messages', () => {
+                        this.$nextTick(() => this.scrollToBottom());
+                    });
+                }
+            }"
+            x-init="init"
+            x-ref="messages-wrapper"
+        >
+            @foreach($this->contextMessages as $message)
+
+                <li class="{{ $message->is_author ? '-sent' : '-receiver' }}">
+                    @include('components.userIcon', [
+                        'size' => '35px',
+                        'source' => asset('assets/images/users/' . $message->sender->icon)
+                    ])
+
+                    <div class="message-wrapper">
+                        <p>{{ $message->message }}</p>
+
+                        <small>{{ $message->created_at->format('H:i') }}</small>
+                    </div>
+                </li>
+
+            @endforeach
+        </ul>
+
+        <div class="send-message-wrapper">
+
+            <div class="send-comment">
+                @include('components.userIcon', [
+                    'size' => '45px',
+                    'source' => asset('assets/images/users/' . $this->authUser->icon)
+                ])
+
+            <form 
+                class="input-wrapper"
+                wire:submit.prevent="sendMessage"
+            >
+                <input wire:model="message" name="comment" id="comment" placeholder="Envia algo legal...">
+
+                <button class="send-icon">
+                    <img src="{{asset('assets/images/icons/send.png')}}" alt="Send Icon">
+                </button>
+            </form>
         </div>
-    </div>
-
-    <ul class="messages-wrapper">
-
-        <li class="-sent">
-
-            @include('components.userIcon', [
-
-                'size' => '35px',
-                'source' => asset('assets/images/users/' . $globalDataUser['icon'])
-
-            ])
-
-            <div class="message-wrapper">
-                
-                <p>Oi</p>
-
-                <small>14:19</small>
-
-            </div>
-
-        </li>
-
-        <li class="-received">
-
-            @include('components.userIcon', [
-
-                'size' => '35px',
-                'source' => 'https://i.pinimg.com/736x/d6/0b/60/d60b60df9147a88c660bc1452385c3a7.jpg'
-
-            ])
-
-            <div class="message-wrapper">
-                
-                <p>Olá</p>
-
-                <small>14:19</small>
-
-            </div>
-
-        </li>
-
-        <li class="-sent">
-
-            @include('components.userIcon', [
-
-                'size' => '35px',
-                'source' => asset('assets/images/users/' . $globalDataUser['icon'])
-
-            ])
-
-            <div class="message-wrapper">
-                
-                <p>Tudo bem?</p>
-
-                <small>14:19</small>
-
-            </div>
-
-        </li>
-
-        <li class="-received">
-
-            @include('components.userIcon', [
-
-                'size' => '35px',
-                'source' => 'https://i.pinimg.com/736x/d6/0b/60/d60b60df9147a88c660bc1452385c3a7.jpg'
-
-            ])
-
-            <div class="message-wrapper">
-                
-                <p>Tudo bem e você?</p>
-
-                <small>14:19</small>
-
-            </div>
-
-        </li>
-
-        <li class="-sent">
-
-            @include('components.userIcon', [
-
-                'size' => '35px',
-                'source' => asset('assets/images/users/' . $globalDataUser['icon'])
-
-            ])
-
-            <div class="message-wrapper">
-                
-                <p>Que bom, estou bem também</p>
-
-                <small>14:19</small>
-
-            </div>
-
-        </li>
-        
-        <li class="-received">
-
-            @include('components.userIcon', [
-
-                'size' => '35px',
-                'source' => 'https://i.pinimg.com/736x/d6/0b/60/d60b60df9147a88c660bc1452385c3a7.jpg'
-
-            ])
-
-            <div class="message-wrapper">
-                
-                <p>kkkkkkkkkkkkkj sai fora</p>
-
-                <small>14:19</small>
-
-            </div>
-
-        </li>
-
-    </ul>
-
-    <div class="send-message-wrapper">
-
-        <div class="send-comment">
-            @include('components.userIcon', [
-                'size' => '45px',
-                'source' => asset('assets/images/users/' . $globalDataUser['icon'])
-            ])
-
-        <form class="input-wrapper">
-            <input name="comment" id="comment" placeholder="Envia algo legal...">
-
-            <button class="send-icon">
-                <img src="{{asset('assets/images/icons/send.png')}}" alt="Send Icon">
-            </button>
-        </form>
-    </div>
+    @else
+        <small class="not-found-message">Nenhuma mensagem selecionada ainda 👀</small>
+    @endif
 
 </div>

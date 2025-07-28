@@ -9,7 +9,9 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 
+#[On('sidebar::refresh')]
 class Sidebar extends Component
 {
     public function render()
@@ -65,10 +67,11 @@ class Sidebar extends Component
 
     }
 
-    public function enterMessage()
+    #[On('chat::enterMessage')]
+    public function enterMessage($selectedUser)
     {
+        $user = User::where('username', $selectedUser)->first();
 
-        
-
+        $this->dispatch('chat::setContextUser', $user);
     }
 }

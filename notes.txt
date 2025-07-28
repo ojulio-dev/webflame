@@ -1,11 +1,5 @@
-próximo passo do chat:
+Coisas importantes:
 
--> componente sidebar: fazer o script da troca de selecionado.
-
-componente message-content: conseguir pegar os dados do usuário clicado.
-
-componente message-content: conseguir pegar as mensagens do usuário clicado.
-
-componente message-content: conseguir enviar uma mensagem para o usuário clicado.
+Fazer a funcionalidade de visualização (e contagem de mensagens não visualizadas em tempo real).
 
 Depois de tudo isso: Conseguir fazer o "digitando" e a atualização automática da tela.

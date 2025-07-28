@@ -1,8 +1,17 @@
-<ul class="sidebar">
+<ul class="sidebar" x-data="{ selected: null }">
 
-    @foreach($this->loadMessages() as $message)
+    @foreach($this->loadMessages() as $index => $message)
 
-        <li wire:click="enterMessage">
+        <li
+            :class="{ '-selected': selected === {{ $index }} }"
+
+            @click="
+                selected = {{ $index }};
+                $dispatch('chat::enterMessage', {
+                    selectedUser: '{{ $message->username }}'
+                })
+            "
+        >
 
             <div class="icon-wrapper">
 

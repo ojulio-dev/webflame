@@ -1,19 +1,14 @@
 <div>
-
     @component('components.modal')
-        
         @slot('modalName', 'main-chat')
 
         @slot('title', 'Mensagens')
 
-        <div class="messages-wrapper">
+        <div id="main-chat-component">
 
             <livewire:chat.sidebar />
-
             <livewire:chat.message-content />
 
         </div>
-
     @endcomponent
-    
 </div>
