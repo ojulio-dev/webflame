@@ -8,21 +8,38 @@ use Livewire\Component;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Subscriber;
+
+use App\Stores\ChatStore;
+
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 
 #[On('sidebar::refresh')]
 class Sidebar extends Component
 {
+    public ?int $selectedUser = null;
+
     public function render()
     {
         return view('livewire.chat.sidebar');
     }
 
-    #[Computed]
-    public function loadMessages()
+    public function selectUser(string $username, int $index)
     {
+        $this->enterMessage($username);
+        $this->selectedUser = $index;
+    }
 
+    #[On('sidebar::unsetSelectedUser')]
+    public function unsetSelectedUser()
+    {
+        $this->reset('selectedUser');
+    }
+
+    #[Computed]
+    public static function loadUsers()
+    {
         $authUserId = auth()->id();
 
         $senders = DB::table('messages')
@@ -30,20 +47,20 @@ class Sidebar extends Component
             ->pluck('sender_id');
 
         $following = DB::table('subscribers')
-            ->where('user_channel_id', $authUserId)
-            ->pluck('user_subscriber_id');
+            ->where('user_subscriber_id', $authUserId)
+            ->pluck('user_channel_id');
 
         $userIds = $senders->merge($following)->unique()->values();
 
         $users = User::whereIn('id', $userIds)->get();
 
-        $messages = $users->map(function ($user) use ($authUserId) {
-      
+        $usersMessage = $users->map(function ($user) use ($authUserId) {
+
             $pendingCount = DB::table('messages')
                 ->where('sender_id', $user->id)
                 ->where('receiver_id', $authUserId)
                 ->whereNull('viewed_at')
-            ->count();
+                ->count();
 
             $lastMessage = DB::table('messages')
                 ->where(function ($query) use ($authUserId, $user) {
@@ -53,7 +70,7 @@ class Sidebar extends Component
                     $query->where('sender_id', $user->id)->where('receiver_id', $authUserId);
                 })
                 ->orderByDesc('created_at')
-            ->first();
+                ->first();
 
             $user->pending_count = $pendingCount;
             $user->last_message = $lastMessage?->message;
@@ -63,11 +80,9 @@ class Sidebar extends Component
             return $user;
         });
 
-        return $messages;
-
+        return $usersMessage;
     }
 
-    #[On('chat::enterMessage')]
     public function enterMessage($selectedUser)
     {
         $user = User::where('username', $selectedUser)->first();

@@ -1,36 +1,25 @@
 <ul class="sidebar" x-data="{ selected: null }">
-
-    @foreach($this->loadMessages() as $index => $message)
-
-        <li
-            :class="{ '-selected': selected === {{ $index }} }"
-
-            @click="
-                selected = {{ $index }};
-                $dispatch('chat::enterMessage', {
-                    selectedUser: '{{ $message->username }}'
-                })
-            "
+    @foreach ($this->loadUsers as $index => $user)
+    
+        <li :class="{ '-selected': {{ $selectedUser }} === {{ $index }} }"
+            wire:click="selectUser('{{ $user->username }}', {{ $index }})"
         >
-
             <div class="icon-wrapper">
 
-                <img src="{{ asset('assets/images/users/' . $message['icon']) }}" alt="Ícone do Usuário">
+                <img src="{{ asset('assets/images/users/' . $user['icon']) }}" alt="Ícone do Usuário">
 
-                <span>{{ $message['pending_count'] }}</span>
+                <span>{{ $user['pending_count'] }}</span>
 
             </div>
 
             <div class="infos-wrapper">
 
-                <p>{{ $message['name'] }}</p>
+                <p>{{ $user['name'] }}</p>
 
-                <small>{{ $message['last_message'] }}</small>
+                <small>{{ $user['last_message'] }}</small>
 
             </div>
-
         </li>
-
+        
     @endforeach
-
 </ul>

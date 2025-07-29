@@ -12,7 +12,9 @@
             </div>
 
             <div class="infos-wrapper">
-                <h4>{{ $this->contextUser->name }}</h4>
+                <a href="{{ route('findUser', $this->contextUser->username) }}" target="_BLANK">
+                    <h4>{{ $this->contextUser->name }}</h4>
+                </a>
             </div>
         </div>
 

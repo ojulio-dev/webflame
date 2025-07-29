@@ -30,6 +30,10 @@
     @import 'app/pages/users/profile/main.scss';
 
     @import 'app/pages/watch.scss';
+
+    @import 'livewire/chat/application.scss';
+    @import 'livewire/chat/sidebar.scss';
+    @import 'livewire/chat/message-content.scss';
 }
 
 #auth-container {
@@ -37,15 +41,5 @@
     @import 'app/auth/main.scss';
 
     @import 'components/authForm.scss';
-
-}
-
-#main-livewire {
-
-    background: red;
-
-    @import 'livewire/chat/application.scss';
-    @import 'livewire/chat/sidebar.scss';
-    @import 'livewire/chat/message-content.scss';
 
 }

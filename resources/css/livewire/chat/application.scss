@@ -1,24 +1,28 @@
 #main-chat {
 
-    display: flex !important;
-
     .modal-items {
         max-height: none;
+        min-height: 70%;
         width: 80%;
-
     }
 
     .modal-content {
-
-        height: 100%;
-
+        flex: 1;
     }
 
     #main-chat-component {
-
         display: flex;
+        align-items: center;
+        justify-content: center;
+
         gap: 35px;
-        
+
+        .not-found {
+            font-size: 1rem;
+            font-style: italic;
+            user-select: none;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
     }
 
 }

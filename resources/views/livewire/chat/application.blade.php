@@ -1,14 +1,12 @@
-<div>
-    @component('components.modal')
-        @slot('modalName', 'main-chat')
+<div id="main-chat-component">
+    @if ($this->followings())
 
-        @slot('title', 'Mensagens')
+        <livewire:chat.sidebar />
+        <livewire:chat.message-content />
 
-        <div id="main-chat-component">
+    @else
 
-            <livewire:chat.sidebar />
-            <livewire:chat.message-content />
+        <small class="not-found">Infelizmente você ainda não segue ninguém... 😔 Vai dar uma explorada, pô 🔥</small>
 
-        </div>
-    @endcomponent
+    @endif
 </div>

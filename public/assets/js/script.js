@@ -142,7 +142,7 @@ $(document).ready(function() {
 
     $('#main-header .search-and-avatar .avatar-wrapper > img').click(function() {
 
-        $('#main-header .search-and-avatar nav').toggle();
+        $('#navigation-menu-element').toggle();
 
         showCloseElements();
 
@@ -150,10 +150,15 @@ $(document).ready(function() {
 
     $('#main-header #navigation-menu-element li .modal-action').click(function() {
 
-        $('#main-header .search-and-avatar nav').toggle();
+        let modalName = $(this).data('modal');
 
-        modalAction($('.main-modal.-message-menu'), 'show');
+        if (modalName == 'main-chat') Livewire.dispatch('chat::refresh');
+
+        hideCloseElements();
+
+        modalAction($(`.main-modal.-${modalName}`), 'show');
 
     });
 
+    $('#main-chat .modal-exit').click(() => Livewire.dispatch('sidebar::unsetSelectedUser'));
 });

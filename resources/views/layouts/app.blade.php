@@ -74,7 +74,7 @@
 
                     <ul class="main-navigation">
                         <li>
-                            <a class="modal-action"><i class="fa-solid fa-comment"></i> Mensagens <span>(0)</span></a>
+                            <a class="modal-action" data-modal="main-chat"><i class="fa-solid fa-comment"></i> Mensagens <span>(0)</span></a>
                         </li>
                     </ul>
 
@@ -95,6 +95,14 @@
     </header>
 
     @include('components.flashMessage')
+
+    @component('components.modal')
+        @slot('modalName', 'main-chat')
+
+        @slot('title', 'Mensagens')
+
+        <livewire:chat.application />
+    @endcomponent
 
     <main class="main-content -{{$page}} {{$classes ?? ''}}"> @yield('main') </main>
 
