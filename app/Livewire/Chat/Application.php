@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Chat;
 
-use App\Models\Subscriber;
 use Livewire\Component;
 
 use App\Models\User;
+use App\Models\Subscriber;
+use App\Models\Message;
+
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +24,13 @@ class Application extends Component
     }
 
     #[Computed]
-    public function followings()
+    public function verifyMessages()
     {
-        return count(Subscriber::where('user_subscriber_id', $this->user->id)->get());
+        $senders = count( Message::where('receiver_id', $this->user->id)->get() );
+
+        $followings = count( Subscriber::where('user_subscriber_id', $this->user->id)->get() );
+
+        return $senders || $followings;
     }
 
     #[On('chat::refresh')]

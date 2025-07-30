@@ -88,7 +88,16 @@ class MessageContent extends Component
     {
         $this->contextUser = $user;
 
+        Message::where([
+                ['sender_id', '=', $this->contextUser->id],
+                ['receiver_id', '=', $this->authUser->id],
+                ['viewed_at', '=', null]
+            ])
+        ->update(['viewed_at' => now()]);
+
         $this->setContextMessages( $this->getContextMessages() );
+
+        $this->dispatch('sidebar::refresh');
     }
 
     public function getContextUser()

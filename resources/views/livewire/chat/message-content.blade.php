@@ -47,7 +47,15 @@
                     <div class="message-wrapper">
                         <p>{{ $message->message }}</p>
 
-                        <small>{{ $message->created_at->format('H:i') }}</small>
+                        <small>
+                            @if ( ! is_null($message->viewed_at) )
+                                <span>
+                                    viewed <i class="fa-solid fa-check"></i>
+                                </span>
+                            @endif
+                            
+                            {{ $message->created_at->format('H:i') }}
+                        </small>
                     </div>
                 </li>
 

@@ -1,5 +1,3 @@
-Coisas importantes:
-
 Fazer a funcionalidade de visualização (e contagem de mensagens não visualizadas em tempo real).
 
 Depois de tudo isso: Conseguir fazer o "digitando" e a atualização automática da tela.

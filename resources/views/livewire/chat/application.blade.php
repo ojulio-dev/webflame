@@ -1,5 +1,5 @@
 <div id="main-chat-component">
-    @if ($this->followings())
+    @if ($this->verifyMessages())
 
         <livewire:chat.sidebar />
         <livewire:chat.message-content />

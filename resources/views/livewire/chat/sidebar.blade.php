@@ -8,7 +8,9 @@
 
                 <img src="{{ asset('assets/images/users/' . $user['icon']) }}" alt="Ícone do Usuário">
 
-                <span>{{ $user['pending_count'] }}</span>
+                @if ($user['pending_count'])
+                    <span>{{ $user['pending_count'] }}</span>
+                @endif
 
             </div>
 
