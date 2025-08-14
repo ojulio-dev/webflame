@@ -14,9 +14,8 @@
         align-items: center;
         justify-content: center;
 
-        overflow: hidden;
-
         gap: 35px;
+        flex: 1;
 
         .not-found {
             font-size: 1rem;

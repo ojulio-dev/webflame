@@ -132,8 +132,6 @@
 
     <script src="{{asset('assets/js/components/actionsMenu.js')}}"></script>
 
-    <script src="{{asset('assets/js/messageMenu.js')}}"></script>
-
     <script src="{{asset('assets/js/script.js')}}"></script>
     
     @section('scripts') @show

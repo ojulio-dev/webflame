@@ -2,14 +2,14 @@ let timeout;
 
 let videoInfos = {};
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     const reloadVideos = () => {
 
         $.ajax({
             url: `${API_PATH}/user/${USER_INFOS.id}/videos`,
             dataType: 'JSON',
-            success: function(data) {
+            success: function (data) {
 
                 $('.main-content.-videos .videos-wrapper').html('');
 
@@ -18,9 +18,9 @@ $(document).ready(function() {
 
                     $('.main-content.-videos .videos-wrapper').html(`
                         <table>
-                            ${data.map(function(video) {
-        
-                                return `
+                            ${data.map(function (video) {
+
+                        return `
                                 
                                     <tr data-video="${video.id}">
                                         <td class="thumbnail-wrapper">
@@ -49,7 +49,7 @@ $(document).ready(function() {
                                     </tr>
                                 
                                 `;
-                            }).join('')}
+                    }).join('')}
                         </table>
                     `);
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
                     $('.main-content.-videos .videos-wrapper').html(`<p class="main-small-message" style="text-align: left">Pô, nos contaram que tu ainda não publicou nenhum vídeo, tá moscando? Clica no botão ae vei</p>`);
 
                 }
-                
+
 
             }
         });
@@ -66,7 +66,7 @@ $(document).ready(function() {
     }
 
     // Modal de Upload de Vídeos
-    $('.main-modal.-upload .modal-content .input-send-video').change(function() {
+    $('.main-modal.-upload .modal-content .input-send-video').change(function () {
 
         const maxAllowedSize = 1 * 1024 * 1024 * 1024;
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
         if (videoSize < maxAllowedSize) {
 
             $('.main-modal.-upload .modal-content .send-video-wrapper').hide();
-    
+
             $('.main-modal.-upload .modal-content .final-info-wrapper').css('display', 'grid');
 
             $('.main-modal.-upload progress').val(50);
@@ -85,11 +85,11 @@ $(document).ready(function() {
             openFlashMessage('Aceitamos vídeos com no máximo 1GB', 'info');
 
         }
-    
-    
+
+
     });
 
-    $('.upload-video-wrapper').submit(function(event) {
+    $('.upload-video-wrapper').submit(function (event) {
 
         openLoaderButton($('#send-video-button'));
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
         const fileInputs = $('.upload-video-wrapper input[type="file"]');
 
-        textInputs.each(function() {
+        textInputs.each(function () {
 
             if ($(this).val() == '') {
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
 
         });
 
-        fileInputs.each(function() {
+        fileInputs.each(function () {
 
             if ($(this)[0].files.length == 0) {
 
@@ -142,7 +142,7 @@ $(document).ready(function() {
             success: (data) => {
 
                 if (data.response) {
-                    
+
                     reloadVideos();
 
                     $('.upload-video-wrapper .final-info-wrapper').hide();
@@ -165,15 +165,15 @@ $(document).ready(function() {
 
     });
 
-    $('.main-modal.-upload .modal-exit').click(function() {
-    
+    $('.main-modal.-upload .modal-exit').click(function () {
+
         clearTimeout(timeout);
-    
+
         $('.main-modal.-upload .modal-title h2 > span').removeClass('active');
         $('.main-modal.-upload .modal-content .final-info-wrapper').hide();
         $('.upload-video-wrapper .email-message-sent').hide();
         $('.main-modal.-upload .modal-content .send-video-wrapper').css('display', 'flex');
-    
+
         $('.upload-video-wrapper .final-info-wrapper input, .upload-video-wrapper .final-info-wrapper textarea').val('');
         $('.upload-video-wrapper .send-video-wrapper input').val('');
 
@@ -181,18 +181,18 @@ $(document).ready(function() {
         $('.upload-video-wrapper .final-info-wrapper #thumbnail-picture').css('border', 'none');
 
         $('.main-modal.-upload progress').val(0);
-    
+
     });
 
     // Reader Thumbnail
-    $('.modal-content.-upload form .final-info-wrapper #thumbnail-create').change(function() {
+    $('.modal-content.-upload form .final-info-wrapper #thumbnail-create').change(function () {
 
         readerImage($('.modal-content.-upload form .final-info-wrapper img')[0], this);
 
         $('.modal-content.-upload form .final-info-wrapper img').css('border', '1px solid #e8e8e8');
     });
 
-    $('body').on('click', '.videos-wrapper .more-info-video', function() {
+    $('body').on('click', '.videos-wrapper .more-info-video', function () {
 
         const videoId = $(this).parents('tr').data('video');
 
@@ -230,7 +230,7 @@ $(document).ready(function() {
                 // Gera os botões de ações
                 editVideoModal.find('.actions-element').html(``);
 
-                editVideoModal.find('.actions-element').append(function() {
+                editVideoModal.find('.actions-element').append(function () {
 
                     if (data.status_id == 1 || data.status_id == 3) {
 
@@ -270,7 +270,7 @@ $(document).ready(function() {
 
     });
 
-    $('.main-modal.-editVideo .modal-exit').click(function() {
+    $('.main-modal.-editVideo .modal-exit').click(function () {
 
         $('.main-modal.-editVideo .infos-wrapper .actions-button-wrapper').hide();
 
@@ -298,8 +298,8 @@ $(document).ready(function() {
 
     $('.main-modal.-editVideo .infos-wrapper').find('input, textarea').change(validateInfoFields).keyup(validateInfoFields);
 
-    $('.main-modal.-editVideo .infos-wrapper .actions-button-wrapper .save').click(function() {
-        
+    $('.main-modal.-editVideo .infos-wrapper .actions-button-wrapper .save').click(function () {
+
         $('.main-modal.-editVideo .infos-wrapper .actions-button-wrapper').hide();
 
         const formData = new FormData();
@@ -319,7 +319,7 @@ $(document).ready(function() {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(data) {
+            success: function (data) {
 
                 reloadVideos();
 
@@ -338,10 +338,10 @@ $(document).ready(function() {
 
     });
 
-    $('.main-modal.-editVideo .infos-wrapper .actions-button-wrapper .discart').click(function() {
+    $('.main-modal.-editVideo .infos-wrapper .actions-button-wrapper .discart').click(function () {
 
         $('.main-modal.-editVideo .infos-wrapper #editing-thumbnail').val('');
-        
+
         $('.main-modal.-editVideo .infos-wrapper #editing-title').val(videoInfos.title);
 
         $('.main-modal.-editVideo .infos-wrapper #editing-description').val(videoInfos.description);
@@ -352,7 +352,7 @@ $(document).ready(function() {
 
     });
 
-    $('body').on('click', '.main-modal.-editVideo .actions-wrapper #deprive-video-button', function() {
+    $('body').on('click', '.main-modal.-editVideo .actions-wrapper #deprive-video-button', function () {
 
         openLoaderButton($(this));
 
@@ -363,7 +363,7 @@ $(document).ready(function() {
             data: {
                 "video_id": videoInfos.id
             },
-            success: function(data) {
+            success: function (data) {
 
                 closeLoaderButton($(this));
 
@@ -378,7 +378,7 @@ $(document).ready(function() {
 
     });
 
-    $('body').on('click', '.main-modal.-editVideo .actions-wrapper #publish-video-button', function() {
+    $('body').on('click', '.main-modal.-editVideo .actions-wrapper #publish-video-button', function () {
 
         openLoaderButton($(this));
 
@@ -389,7 +389,7 @@ $(document).ready(function() {
             data: {
                 "video_id": videoInfos.id
             },
-            success: function(data) {
+            success: function (data) {
 
                 closeLoaderButton($(this));
 
@@ -404,7 +404,7 @@ $(document).ready(function() {
 
     });
 
-    $('body').on('click', '.main-modal.-editVideo .actions-wrapper #delete-video-button', function() {
+    $('body').on('click', '.main-modal.-editVideo .actions-wrapper #delete-video-button', function () {
 
         openLoaderButton($(this));
 
@@ -417,12 +417,12 @@ $(document).ready(function() {
             data: {
                 "id": videoInfos.id
             },
-            success: function(data) {
+            success: function (data) {
 
                 closeLoaderButton($(this));
 
                 reloadVideos();
-                
+
                 openFlashMessage('Nah, seu vídeo foi deletado com sucesso, fazer oq né...', 'success');
 
                 modalAction($('.main-modal.-editVideo'), 'close');

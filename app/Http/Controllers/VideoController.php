@@ -37,7 +37,6 @@ class VideoController extends Controller
 
             echo json_encode(['status' => false, 'error' => $validator->errors()->first()]);
             exit();
-
         }
 
         $data = [];
@@ -56,7 +55,6 @@ class VideoController extends Controller
 
             echo json_encode(['status' => false]);
             exit();
-
         }
 
         // Thumbnail validate
@@ -81,12 +79,10 @@ class VideoController extends Controller
 
             echo json_encode(['status' => false]);
             exit();
-
         } else {
 
             echo json_encode(['response' => true]);
             exit();
-
         }
     }
 
@@ -102,13 +98,11 @@ class VideoController extends Controller
             $videos[$key]['views_count'] .= $videos[$key]['views_count'] == 1 ? ' visualização' : ' visualizações';
 
             $videos[$key]['user'] = $video->user;
-
         }
 
         echo json_encode($videos);
 
         exit();
-        
     }
 
     public function watch(Request $r)
@@ -117,7 +111,6 @@ class VideoController extends Controller
         if (!$r->video) {
 
             return redirect()->route('home');
-
         }
 
         $validateView = View::where([
@@ -131,34 +124,30 @@ class VideoController extends Controller
                 'video_id' => $r->video,
                 'user_id' => Auth::id()
             ]);
-    
-            $view->save();
 
+            $view->save();
         }
 
-        $dataVideo = Video::with(['comments.user', 'comments.video', 'comments' => function($query) {
+        $dataVideo = Video::with(['comments.user', 'comments.video', 'comments' => function ($query) {
 
             $query->orderBy('created_at', 'desc');
-
-        }, 'user'])->whereHas('status', function($query) {
+        }, 'user'])->whereHas('status', function ($query) {
 
             $query->where('name', 'public');
-
         })->activeVideos()->find($r->video);
 
         if (!$dataVideo) return redirect()->route('home');
 
-        foreach($dataVideo['comments'] as $comment) {
+        foreach ($dataVideo['comments'] as $comment) {
 
             $comment->dataDiff();
-
         }
 
         $dataVideo['views_count'] = $dataVideo->views->count();
 
         $dataVideo['views_count'] .= $dataVideo['views_count'] == 1 ? ' visualização' : ' visualizações';
 
-        $dataVideo['user']['subscribers_count'] = $dataVideo['user']->subscribers->count();   
+        $dataVideo['user']['subscribers_count'] = $dataVideo['user']->subscribers->count();
 
         $dataVideo['hasRegister'] = Subscriber::where([
             'user_subscriber_id' => Auth::user()->id,
@@ -167,9 +156,8 @@ class VideoController extends Controller
 
 
         $dataVideo['interactions'] = $dataVideo->interactions();
-        
-        return view('app.watch', compact(['dataVideo']));
 
+        return view('app.watch', compact(['dataVideo']));
     }
 
     public function updateVideo(Request $r)
@@ -190,7 +178,6 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         }
 
         $data = [];
@@ -210,7 +197,6 @@ class VideoController extends Controller
             $uploadFile = $r->file('thumbnail')->move($filePath, $fileName);
 
             $data['thumbnail'] = $uploadFile->getFilename();
-
         }
 
         $resultUpdate = Video::where('id', $data['id'])->update($data);
@@ -223,7 +209,6 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         } else {
 
             echo json_encode([
@@ -232,9 +217,7 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         }
-
     }
 
     public function updateStatus(Request $r, $id)
@@ -250,7 +233,6 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         } else {
 
             echo json_encode([
@@ -259,9 +241,7 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         }
-
     }
 
     public static function findVideoById(int $id)
@@ -270,7 +250,7 @@ class VideoController extends Controller
         $dataVideo = Video::activeVideos()->find($id);
 
         if (!$dataVideo) return [];
-        
+
         $dataVideo->user;
 
         return $dataVideo;
@@ -280,7 +260,6 @@ class VideoController extends Controller
     {
 
         return Video::where('title', 'like', "{$search}%")->activeVideos()->get()->toArray();
-
     }
 
     public function delete(Request $r)
@@ -294,7 +273,6 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         }
 
         $video = Video::where('id', $r->id)->first();
@@ -307,7 +285,6 @@ class VideoController extends Controller
             ]);
 
             exit();
-
         }
 
         $videoPath = public_path('assets/videos/' . $video->video);
@@ -319,14 +296,13 @@ class VideoController extends Controller
         $resultDelete = $video->delete();
 
         if (!$resultDelete) {
-        
+
             echo json_encode([
                 'message' => 'Vídeo não foi deletado não...',
                 'response' => false
             ]);
 
             exit();
-
         }
 
         echo json_encode([
@@ -335,6 +311,5 @@ class VideoController extends Controller
         ]);
 
         exit();
-
     }
 }
